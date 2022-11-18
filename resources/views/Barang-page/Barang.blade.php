@@ -67,7 +67,7 @@
                 <th colspan="2">Ukuran</th>
                 <th rowspan="2">Harga</th>
                 <th rowspan="2">Berat</th>
-                <th rowspan="2">Kategori</th>
+                <th rowspan="2">Size</th>
                 <th rowspan="2">Deskripsi</th>
                 <th rowspan="2">penjualan</th>
                 <th rowspan="2">Foto</th>
@@ -88,7 +88,7 @@
                     <td>{{$barang->ukuran_lebar}} <small>cm</small></td>
                     <td>Rp. @idr ($barang->harga)</td>
                     <td>{{$barang->berat}} <small>gram</small></td>
-                    <td>{{$barang->kategori}}</td>
+                    <td>{{$barang->size}}</td>
                     <td>{{$barang->deskripsi_produk}}</td>
                     <td>
 						@if ($barang->penjualan == 0)

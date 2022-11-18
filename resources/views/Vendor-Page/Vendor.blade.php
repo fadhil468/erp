@@ -11,13 +11,13 @@
 				<li><a href="#">
 					<em class="fa fa-home"></em>
 				</a></li>
-				<li class="active">Dashboard</li>
+				<li class="active">Data Vendor</li>
 			</ol>
 		</div><!--/.row-->
 		
 		<div class="row">
 			<div class="col-lg-12">
-				<h1 class="page-header">Dashboard</h1>
+				<h1 class="page-header">Data Vendor</h1>
 			</div>
 		</div><!--/.row-->
 		
@@ -57,20 +57,50 @@
 				</div>
 			</div><!--/.row-->
 		</div>
-        <table class="table">
+        <table class="table table-bordered table-striped table-hover">
             <thead>
-				<a type="button" class="btn btn-primary btn-lg" href="{{ route ('vendor.create') }} ">+</a>
+				<a type="button" class="btn btn-primary btn-lg" href="{{ route ('bom.create') }} ">+</a>
               <tr>
-                <th scope="col">No</th>
-                <th scope="col">Nama Vendor</th>
-                <th scope="col">Kode Produk</th>
-                <th scope="col">Nama Produk</th>
-                <th scope="col">Nomor Telfon</th>
-                <th scope="col">Alamat</th>
-                <th scope="col">Status</th>
-                <th scope="col">Order</th>
+                <th rowspan="2">No</th>
+                <th rowspan="2">Kode Vendor</th>
+                <th rowspan="2">Nama Vendor</th>
+                <th rowspan="2">Jenis Vendor</th>
+                <th colspan="2">Kontak</th>
+                <th rowspan="2">Bahan</th>
+                <th rowspan="2">Rekening</th>
+				<th rowspan="2">Gambar</th>
+                <th rowspan="2">Action</th>
+              </tr>
+              <tr>
+                <th>E-mail</th>
+                <th>No Telpon</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody class="text-center">
+                @foreach ($bom as $bm)
+                <tr>
+                    <td>{{$bm->id}}</td>
+                    <td>{{$bm->kode}}</td>
+                    <td>{{$bm->nama}}</td>
+                    <td>{{$bm->size}}</td>
+                    <td>{{$bm->kain}}</td>
+                    <td>{{$bm->benang}}</td>
+                    <td>{{$bm->dakron}}</td>
+                    <td>{{$bm->quantity}}</td>
+                    <td>{{$bm->estimasi}}</td>
+                    <td>
+                        <form onsubmit="return confirm('Apakah Anda Yakin ?');"
+                            action="{{ route('bom.destroy', $bm->id) }}" method="POST">
+                            <a href="{{ route('bom.edit', $bm->id) }}"
+                                class="btn btn-sm btn-info"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-sm btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                        </form>
+                        {{-- <a href="{{ route('bom.cetak', $bm->id) }}"
+                            class="btn btn-sm btn-info"><i class="fa fa-pencil" aria-hidden="true"></i></a> --}}
+                    </td>
+                </tr>
+                @endforeach
             </tbody>
 @endsection

@@ -53,7 +53,7 @@ class BarangController extends Controller
             'ukuran_lebar' => $request->ukuran_lebar,
             'harga' => $request->harga,
             'berat' => $request->berat,
-            'kategori' => $request->kategori,
+            'size' => $request->size,
             'deskripsi_produk' => $request->deskripsi_produk,
             'penjualan' => 0
         ]);
@@ -104,7 +104,7 @@ class BarangController extends Controller
                     'ukuran_lebar' => $request->ukuran_lebar,
                     'harga' => $request->harga,
                     'berat' => $request->berat,
-                    'kategori' => $request->kategori,
+                    'size' => $request->size,
                     'deskripsi_produk' => $request->deskripsi_produk,
                     'penjualan' => $request->penjualan
                 ]);

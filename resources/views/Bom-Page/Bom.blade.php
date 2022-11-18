@@ -64,7 +64,7 @@
                 <th rowspan="2">No</th>
                 <th rowspan="2">Kode Produk</th>
                 <th rowspan="2">Nama Produk</th>
-                <th rowspan="2">Kategori</th>
+                <th rowspan="2">Size</th>
                 <th colspan="3">Bahan Baku</th>
                 <th rowspan="2">Quantity</th>
                 <th rowspan="2">Estimasi</th>
@@ -73,7 +73,7 @@
               <tr>
                 <th>Kain/<small>meter</small></th>
                 <th>Benang/<small>meter</small></th>
-                <th>Dakron/<small>kg</small></th>
+                <th>Dakron/<small>gram</small></th>
               </tr>
             </thead>
             <tbody class="text-center">
@@ -82,7 +82,7 @@
                     <td>{{$bm->id}}</td>
                     <td>{{$bm->kode}}</td>
                     <td>{{$bm->nama}}</td>
-                    <td>{{$bm->kategori}}</td>
+                    <td>{{$bm->size}}</td>
                     <td>{{$bm->kain}}</td>
                     <td>{{$bm->benang}}</td>
                     <td>{{$bm->dakron}}</td>

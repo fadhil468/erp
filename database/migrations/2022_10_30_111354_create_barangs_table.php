@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('ukuran_lebar');
             $table->integer('harga');
             $table->integer('berat');
-            $table->string('kategori');
+            $table->string('size');
             $table->string('deskripsi_produk');
             $table->integer('penjualan');
             $table->string('foto')->nullable();

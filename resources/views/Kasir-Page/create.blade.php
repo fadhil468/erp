@@ -31,11 +31,11 @@
                                     <label>Detail Produk</label>
                                     <select id="id" class="form-control dynamic " type="text" name="id" data-dependent="kode_produk" data-dynamic1="nama_produk" 
                                     data-dynamic2="ukuran_panjang" data-dynamic3="ukuran_lebar" data-dynamic4="harga" data-dynamic5="berat" 
-                                    data-dynamic6="kategori" required >
+                                    data-dynamic6="size" required >
                                         <option disabled selected > Pilih </option>
                                         @foreach ($barangs as $barang)
                                             <option value="{{$barang->id}}">
-                                                {{$barang->kode_produk}} || {{$barang->nama_produk}} || {{$barang->kategori}}
+                                                {{$barang->kode_produk}} || {{$barang->nama_produk}} || {{$barang->size}}
                                             </option>
                                         @endforeach
                                     </select>
@@ -71,8 +71,8 @@
                                     </select>
                                 </td>
                                 <td>
-                                    <label>Kategori</label>
-                                    <select class="form-control" type="text" name="kategori" id="kategori" placeholder="" readonly>
+                                    <label>Size</label>
+                                    <select class="form-control" type="text" name="size" id="size" placeholder="" readonly>
                                     </select>
                                 </td>
                                 <td>
@@ -84,6 +84,19 @@
                                     <input class="form-control" type="text" name="total" id="total" placeholder="" readonly >
                                 </td>
                                 <br><br>
+                                <td>
+                                    <label>Nama Pemesan</label>
+                                    <input class="form-control" type="text" name="nama_pemesan" placeholder="" required >
+                                </td>
+                                <td>
+                                    <label>Nomor Pemesan</label>
+                                    <input class="form-control" type="text" name="kontak_pemesan" placeholder="" required >
+                                </td>
+                                <td>
+                                    <label>Alamat Pemesan</label>
+                                    <input class="form-control" type="text" name="alamat_pemesan" placeholder="" required >
+                                </td>
+                                <td>
                                     <button type="submit" class="btn btn-info" style="margin-left: 1.5rem">Simpan Data</button>
                                 </td>
                             </div>
@@ -270,7 +283,7 @@
                     });
                 });
             </script>
-        {{-- Ajax for Ukuran Kategori--}}
+        {{-- Ajax for Ukuran size--}}
             <script>
                 $(document).ready(function() {
                     $('.dynamic').change(function() {
@@ -295,7 +308,7 @@
                         }
                     });
                     $('#id').change(function() {
-                        $('#kategori').val('');
+                        $('#size').val('');
                     });
                 });
             </script>
