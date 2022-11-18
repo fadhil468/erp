@@ -54,6 +54,7 @@ class BahanBakuController extends Controller
             'harga' => $request->harga,
             'vendor' => $request->vendor,
             'deskripsi_bahan_baku' => $request->deskripsi_bahan_baku,
+            'stok' => $request->stok
         ]);
         return redirect()->route('bahanbaku.index');
     }
@@ -102,7 +103,8 @@ class BahanBakuController extends Controller
                     'jumlah' => $request->jumlah,
                     'harga' => $request->harga,
                     'vendor' => $request->vendor,
-                    'deskripsi_bahan_baku' => $request->deskripsi_bahan_baku
+                    'deskripsi_bahan_baku' => $request->deskripsi_bahan_baku,
+                    'stok' => $request->stok
                 ]);
                 return redirect()->route('bahanbaku.index');
     }

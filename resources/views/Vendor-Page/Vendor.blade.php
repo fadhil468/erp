@@ -57,42 +57,20 @@
 				</div>
 			</div><!--/.row-->
 		</div>
-		
-        <table class="table table-bordered table-striped table-hover">
+        <table class="table">
             <thead>
-			<a type="button" class="btn btn-primary" href="{{ route ('pemesanan.create') }} ">+</a>
+				<a type="button" class="btn btn-primary btn-lg" href="{{ route ('vendor.create') }} ">+</a>
               <tr>
                 <th scope="col">No</th>
-                <th scope="col">Nama Pembeli</th>
-                <th scope="col">Kontak Pembeli</th>
-                <th scope="col">Alamat Pembeli</th>
+                <th scope="col">Nama Vendor</th>
                 <th scope="col">Kode Produk</th>
-                <th scope="col">Jumlah Pesanan</th>
-                <th scope="col">Total Harga</th>
-				<th scope="col">Action</th>
+                <th scope="col">Nama Produk</th>
+                <th scope="col">Nomor Telfon</th>
+                <th scope="col">Alamat</th>
+                <th scope="col">Status</th>
+                <th scope="col">Order</th>
               </tr>
             </thead>
             <tbody>
-                @foreach ($pemesanan as $pemesanan )
-                <tr style="text-align: center">
-                    <td>{{$pemesanan->id}}</td>
-                    <td>{{$pemesanan->nama_pembeli}}</td>
-					<td>{{$pemesanan->kontak_pembeli}}</td>
-                    <td>{{$pemesanan->alamat_pembeli}}</td>
-                    <td>{{$pemesanan->kode_produk}}</td>
-                    <td>{{$pemesanan->jumlah_pesanan}}</td>
-                    <td>Rp. @idr($pemesanan->total_harga)</td>
-                    <td>
-					<form onsubmit="return confirm('Apakah Anda Yakin ?');"
-                            action="{{ route('pemesanan.destroy', $pemesanan->id) }}" method="POST">
-                            <a href="{{ route('pemesanan.edit', $pemesanan->id) }}"
-                                class="btn btn-sm btn-info"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-sm btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></button>
-                        </form>
-                    </td>
-                </tr>
-                @endforeach
             </tbody>
 @endsection

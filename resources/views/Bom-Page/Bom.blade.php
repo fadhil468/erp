@@ -11,13 +11,13 @@
 				<li><a href="#">
 					<em class="fa fa-home"></em>
 				</a></li>
-				<li class="active">Data Bahan Baku</li>
+				<li class="active">Data BOM</li>
 			</ol>
 		</div><!--/.row-->
 		
 		<div class="row">
 			<div class="col-lg-12">
-				<h1 class="page-header">Data Bahan Baku</h1>
+				<h1 class="page-header">Data BOM</h1>
 			</div>
 		</div><!--/.row-->
 		
@@ -59,49 +59,46 @@
 		</div>
         <table class="table table-bordered table-striped table-hover">
             <thead>
-				<a type="button" class="btn btn-primary btn-lg" href="{{ route ('bahanbaku.create') }} ">+</a>
+				<a type="button" class="btn btn-primary btn-lg" href="{{ route ('bom.create') }} ">+</a>
               <tr>
-                <th scope="col">No</th>
-                <th scope="col">ID Produk</th>
-                <th scope="col">Nama Bahan Baku</th>
-                <th scope="col">Berat Satuan</th>
-                <th scope="col">Harga</th>
-                <th scope="col">Vendor</th>
-                <th scope="col">Deskripsi</th>
-                <th scope="col">Stok</th>
-                <th scope="col">Foto</th>
-				<th scope="col">Action</th>
+                <th rowspan="2">No</th>
+                <th rowspan="2">Kode Produk</th>
+                <th rowspan="2">Nama Produk</th>
+                <th rowspan="2">Kategori</th>
+                <th colspan="3">Bahan Baku</th>
+                <th rowspan="2">Quantity</th>
+                <th rowspan="2">Estimasi</th>
+                <th rowspan="2">Action</th>
+              </tr>
+              <tr>
+                <th>Kain/<small>meter</small></th>
+                <th>Benang/<small>meter</small></th>
+                <th>Dakron/<small>kg</small></th>
               </tr>
             </thead>
-            <tbody>
-                @foreach ($bahanbakus as $bahanbaku )
-                <tr style="text-align: center">
-                    <td>{{$bahanbaku->id}}</td>
-                    <td>{{$bahanbaku->id_produk}}</td>
-                    <td>{{$bahanbaku->nama_bahan_baku}}</td>
-                    <td>{{$bahanbaku->berat_satuan}}</td>
-                    <td>Rp. @idr ($bahanbaku->harga)</td>
-                    <td>{{$bahanbaku->vendor}}</td>
-                    <td>{{$bahanbaku->deskripsi_bahan_baku}}</td>
-                    <td>
-						@if ($bahanbaku->stok == 0)
-							<span class="badge bg-danger">Belum Tersedia</span>
-						@else
-							{{$bahanbaku->stok}}
-						@endif
-					</td>
-                    <td>
-                        <img width="50" height="50"
-                            src="{{ Storage::url('public/posts/') . $bahanbaku->foto}}" alt="">
+            <tbody class="text-center">
+                @foreach ($bom as $bm)
+                <tr>
+                    <td>{{$bm->id}}</td>
+                    <td>{{$bm->kode}}</td>
+                    <td>{{$bm->nama}}</td>
+                    <td>{{$bm->kategori}}</td>
+                    <td>{{$bm->kain}}</td>
+                    <td>{{$bm->benang}}</td>
+                    <td>{{$bm->dakron}}</td>
+                    <td>{{$bm->quantity}}</td>
+                    <td>{{$bm->estimasi}}</td>
                     <td>
                         <form onsubmit="return confirm('Apakah Anda Yakin ?');"
-                            action="{{ route('bahanbaku.destroy', $bahanbaku->id) }}" method="POST">
-                            <a href="{{ route('bahanbaku.edit', $bahanbaku->id) }}"
+                            action="{{ route('bom.destroy', $bm->id) }}" method="POST">
+                            <a href="{{ route('bom.edit', $bm->id) }}"
                                 class="btn btn-sm btn-info"><i class="fa fa-pencil" aria-hidden="true"></i></a>
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-sm btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></button>
                         </form>
+                        {{-- <a href="{{ route('bom.cetak', $bm->id) }}"
+                            class="btn btn-sm btn-info"><i class="fa fa-pencil" aria-hidden="true"></i></a> --}}
                     </td>
                 </tr>
                 @endforeach
