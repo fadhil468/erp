@@ -38,8 +38,20 @@ class KasirController extends Controller
      */
     public function store(Request $request)
     {
-        Pemesanan::all($request->all());
-        return redirect()->route('pemesanan.index');
+        Pemesanan::create([
+            'id_produk'=> $request->id,
+            'nama_pemesan'=> $request->nama_pemesan,
+            'kontak_pemesan'=> $request->nama_pemesan,
+            'alamat_pemesan'=> $request->nama_pemesan,
+            'kode_produk' =>$request->kode_produk,
+            'nama_produk' =>$request->nama_produk,
+            'kain'=>$request->kain,
+            'benang'=>$request->benang,
+            'dakron'=>$request->dakron,
+            'quantity'=>1,
+            'estimasi'=>$request->estimasi
+        ]);
+        return redirect()->route('bom.index');
     }
 
     /**

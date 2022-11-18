@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\bom;
+use App\Models\Barang;
 use Illuminate\Support\Facades\DB;
 
 class BomController extends Controller
@@ -26,7 +27,8 @@ class BomController extends Controller
      */
     public function create()
     {
-        return view('Bom-Page.create');
+        $barangs = Barang::all();
+        return view('Bom-Page.create',compact('barangs'));
     }
 
     /**
@@ -40,7 +42,7 @@ class BomController extends Controller
         Bom::create([
             'kode'=> $request->kode,
             'nama'=> $request->nama,
-            'kategori' =>$request->kategori,
+            'size' =>$request->size,
             'kain'=>$request->kain,
             'benang'=>$request->benang,
             'dakron'=>$request->dakron,
@@ -85,7 +87,7 @@ class BomController extends Controller
         $bom->update([
             'kode'=> $request->kode,
             'nama'=> $request->nama,
-            'kategori' =>$request->kategori,
+            'size' =>$request->size,
             'kain'=>$request->kain,
             'benang'=>$request->benang,
             'dakron'=>$request->dakron,
@@ -106,5 +108,47 @@ class BomController extends Controller
         $delete = Bom::find($id);
         $delete->delete();
         return redirect()->route('bom.index');
+    }
+    public function bom(Request $request)
+    {
+        $select = $request->get('select');
+        $value = $request->get('value');
+        $dependent = $request->get('dependent');
+        $data = DB::table('barangs')
+            ->where($select, $value)
+            ->groupBy($dependent)
+            ->get();
+        foreach ($data as $row) {
+            $output = '<option value="' . $row->$dependent . '" name="kode_produk" selected>' . ucfirst($row->$dependent) . '</option>';
+        }
+        echo $output;
+    }
+    public function bom1(Request $request)
+    {
+        $select = $request->get('select');
+        $value = $request->get('value');
+        $dynamic1 = $request->get('dynamic1');
+        $data = DB::table('barangs')
+            ->where($select, $value)
+            ->groupBy($dynamic1)
+            ->get();
+        foreach ($data as $row) {
+            $output = '<option value="' . $row->$dynamic1 . '" name="nama_produk" selected>' . ucfirst($row->$dynamic1) . '</option>';
+        }
+        echo $output;
+    }
+    public function bom2(Request $request)
+    {
+        $select = $request->get('select');
+        $value = $request->get('value');
+        $dynamic2 = $request->get('dynamic2');
+        $data = DB::table('barangs')
+            ->where($select, $value)
+            ->groupBy($dynamic2)
+            ->get();
+        foreach ($data as $row) {
+            $output = '<option value="' . $row->$dynamic2 . '" name="kode_produk" selected>' . ucfirst($row->$dynamic2) . '</option>';
+        }
+        echo $output;
     }
 }

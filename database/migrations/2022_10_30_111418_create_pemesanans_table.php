@@ -15,12 +15,23 @@ return new class extends Migration
     {
         Schema::create('pemesanans', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_pembeli');
-            $table->string('kontak_pembeli');
-            $table->string('alamat_pembeli');
+            $table->integer('id_produk');
+            $table->string('nama_pemesan');
+            $table->string('kontak_pemesan');
+            $table->string('alamat_pemesan');
             $table->string('kode_produk');
-            $table->integer('jumlah_pesanan');
-            $table->integer('total_harga');
+            $table->string('nama_produk');
+            $table->string('ukuran_panjang');
+            $table->string('ukuran_lebar');
+            $table->integer('harga');
+            $table->integer('berat');
+            $table->integer('jumlah');
+            $table->string('size');
+            $table->string('status');
+            $table->integer('total');
+            $table->string('kain');
+            $table->string('benang');
+            $table->string('dakron');
             $table->timestamps();
         });
     }

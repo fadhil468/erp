@@ -25,49 +25,52 @@
                 <h4 class="card-header">Tambah Data</h4>
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-xs-6 col-md-6 col-lg-6 no-padding">
+                        <div class="col-xs-6 col-md-6 col-lg-12 no-padding">
                             <div style="margin-left: 1rem">
-                                <td>
+                                <div class="col-md-6">
                                     <label>Kode Produk</label>
                                     <input class="form-control" type="text" name="kode_produk" placeholder="" required>
-                                </td>
-                                <td>
+                                </div>
+                                <div class="col-md-6">
                                     <label>Nama Produk</label>
                                     <input class="form-control" type="text" name="nama_produk" placeholder="" required>
-                                </td>
-                                </td>
-                                <td>
+                                </div>
+                                <div class="col-md-6">
                                     <label>Ukuran Panjang <span class="text-muted" style="font-weight: normal"> /cm</span></label>
                                     <input class="form-control" type="text" name="ukuran_panjang" placeholder="" required>
-                                </td>
-                                </td>
-                                <td>
+                                </div>
+                                <div class="col-md-6">
                                     <label>Ukuran Lebar  <span class="text-muted" style="font-weight: normal"> /cm</span></label>
                                     <input class="form-control" type="text" name="ukuran_lebar" placeholder="" required>
-                                </td>
-                                </td>
-                                <td>
+                                </div>
+                                <div class="col-md-6">
                                     <label>Harga</label>
                                     <input class="form-control" type="text" name="harga" placeholder="" required>
-                                </td>
-                                </td>
-                                <td>
+                                </div>
+                                <div class="col-md-6">
                                     <label>Berat</label>
                                     <input class="form-control" type="text" name="berat" placeholder="" required>
-                                </td>
-                                </td>
-                                <td>
-                                    <label>Kategori</label>
-                                    <input class="form-control" type="text" name="kategori" placeholder="" required>
-                                </td>
-                                </td>
-                                <td>
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Size</label>
+                                    <select class="form-control" type="text" name="size" placeholder="" required>
+                                        <option disable selected>-- Pilih Size --</option>
+                                        <option value="S">Small</option>
+                                        <option value="M">Medium</option>
+                                        <option value="L">Large</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
                                     <div class="form-floating">
                                         <label for="floatingTextarea">Deskripsi Produk <span class="text-muted" style="color: #fe4654; font-weight:normal" > *isi data sesuai dengan barang</span></label>
                                         <textarea class="form-control" placeholder="" id="floatingTextarea" name="deskripsi_produk" required></textarea>
                                     </div>
-                                <br>
-                                <td>
+                                </div>
+                                <div class="col-md-2">
+                                <img src="../../assets/gambar/admin.png" alt="Image" class="d-block rounded"
+                                    height="75" width="auto" id="uploadedAvatar" />
+                                </div>
+                                    <div class="col-md-5">
                                     <div class="button-wrapper">
                                         <label for="inputImage" class="">
                                             <span class="d-none d-sm-block required-field">Upload new foto</span>
@@ -77,15 +80,23 @@
                                         </label>
                                         <p class="text-muted mt-1">Allowed JPG, JPEG, GIF or PNG. Max size of 2MB</p>
                                     </div>
-                                </td>
-                                <br>
-                                <td>
-                                    <button type="submit" class="btn btn-info" style="margin-left: 1.5rem">Simpan Data</button>
-                                </td>
+                                </div>
+                                 
                             </div>
+                        </div>
+                        <div>
+                            <button type="submit" class="btn btn-info" style="margin-left: 1.5rem">Simpan Data</button>
                         </div>
                     </div>
                 </div>
             </div>
         </form>
+        <script>
+            inputImage.onchange = evt => {
+            const [file] = inputImage.files
+            if (file) {
+                uploadedAvatar.src = URL.createObjectURL(file)
+            }
+            }
+        </script>
 @endsection

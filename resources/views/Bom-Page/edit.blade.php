@@ -27,41 +27,42 @@
                 <h4 class="card-header">Edit Data</h4>
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-xs-6 col-md-6 col-lg-6 no-padding">
+                        <div class="col-xs-6 col-md-6 col-lg-12 no-padding">
                             <div style="margin-left: 1rem">
-                                <td>
+                                <div class="col-md-6">
                                     <label>Kode Produk</label>
                                     <input class="form-control" type="text" name="kode" placeholder="" required>
-                                </td>
-                                <td>
+                                </div>
+                                <div class="col-md-6">
                                     <label>Nama Produk</label>
                                     <input class="form-control" type="text" name="nama" placeholder="" required>
-                                </td>
-                                <td>
+                                </div>
+                                <div class="col-md-6">
                                     <label>Kain <span class="text-muted" style="font-weight: normal"> /cm</span></label>
                                     <input class="form-control" type="text" name="kain" placeholder="" required>
-                                </td>
-                                <td>
+                                </div>
+                                <div class="col-md-6">
                                     <label>Benang  <span class="text-muted" style="font-weight: normal"> /cm</span></label>
                                     <input class="form-control" type="text" name="benang" placeholder="" required>
-                                </td>
-                                <td>
-                                    <label>Kategori  <span class="text-muted" style="font-weight: normal"> /cm</span></label>
-                                    <input class="form-control" type="text" name="kategori" placeholder="" required>
-                                </td>
-                                <td>
+                                </div>
+                                <div class="col-md-6">
+                                    <label>size  <span class="text-muted" style="font-weight: normal"> /cm</span></label>
+                                    <input class="form-control" type="text" name="size" placeholder="" required>
+                                </div>
+                                <div class="col-md-6">
                                     <label>Dakron</label>
                                     <input class="form-control" type="text" name="dakron" placeholder="" required>
-                                </td>
-                                <td>
+                                </div>
+                                <div class="col-md-6">
                                     <label>Estimasi</label>
                                     <input class="form-control" type="text" name="estimasi" placeholder="" required>
-                                </td>
-                                <td>
-                                    <button type="submit" class="btn btn-info" style="margin-left: 1.5rem">Simpan Data</button>
-                                </td>
+                                </div>
+                                
                             </div>
                         </div>
+                    </div>
+                    <div>
+                        <button type="submit" class="btn btn-info" style="margin-left: 1.5rem">Simpan Data</button>
                     </div>
                 </div>
             </div>

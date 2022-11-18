@@ -60,28 +60,45 @@
 		
         <table class="table table-bordered table-striped table-hover">
             <thead>
-			<a type="button" class="btn btn-primary" href="{{ route ('pemesanan.create') }} ">+</a>
               <tr>
-                <th scope="col">No</th>
-                <th scope="col">Nama Pembeli</th>
-                <th scope="col">Kontak Pembeli</th>
-                <th scope="col">Alamat Pembeli</th>
-                <th scope="col">Kode Produk</th>
-                <th scope="col">Jumlah Pesanan</th>
-                <th scope="col">Total Harga</th>
-				<th scope="col">Action</th>
+                <th rowspan="2">No</th>
+                <th colspan="3">Data Pemesan</th>
+                <th colspan="4">Data Produk</th>
+				<th rowspan="2">Jumlah Pesanan</th>
+				<th rowspan="2">Total Harga</th>
+				<th rowspan="2">Status</th>
+				<th rowspan="2">Action</th>
               </tr>
+			  <tr>
+                <th >Nama Pemesan</th>
+                <th >Kontak Pemesan</th>
+                <th >Alamat Pemesan</th>
+				<th >Kode Produk</th>
+                <th >Nama Produk</th>
+                <th >Size</th>
+				<th >Harga</th>
+			  </tr>
             </thead>
             <tbody>
                 @foreach ($pemesanan as $pemesanan )
                 <tr style="text-align: center">
                     <td>{{$pemesanan->id}}</td>
-                    <td>{{$pemesanan->nama_pembeli}}</td>
-					<td>{{$pemesanan->kontak_pembeli}}</td>
-                    <td>{{$pemesanan->alamat_pembeli}}</td>
+                    <td>{{$pemesanan->nama_pemesan}}</td>
+					<td>{{$pemesanan->kontak_pemesan}}</td>
+                    <td>{{$pemesanan->alamat_pemesan}}</td>
                     <td>{{$pemesanan->kode_produk}}</td>
-                    <td>{{$pemesanan->jumlah_pesanan}}</td>
-                    <td>Rp. @idr($pemesanan->total_harga)</td>
+                    <td>{{$pemesanan->nama_produk}}</td>
+                    <td>{{$pemesanan->size}}</td>
+                    <td>{{$pemesanan->harga}}</td>
+                    <td>{{$pemesanan->jumlah}}</td>
+                    <td>Rp. @idr($pemesanan->total)</td>
+                    <td>
+						@if ($pemesanan->status == 0)
+							Belum diproses
+						@else
+							sudah diproses
+						@endif
+					</td>
                     <td>
 					<form onsubmit="return confirm('Apakah Anda Yakin ?');"
                             action="{{ route('pemesanan.destroy', $pemesanan->id) }}" method="POST">

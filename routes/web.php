@@ -32,7 +32,9 @@ Route::resource('/bahanbaku',BahanBakuController::class);
 
 // BOM
 Route::resource('/bom',BomController::class);
-
+Route::post('/bom/ajax',[BomController::class,'bom'])->name('bom.ajax');
+Route::post('/bom/ajax1',[BomController::class,'bom1'])->name('bom.ajax1');
+Route::post('/bom/ajax2',[BomController::class,'bom2'])->name('bom.ajax2');
 // Kasir
 Route::resource('/kasir',KasirController::class);
 Route::post('/kasir/ajax',[KasirController::class,'ajax'])->name('kasir.ajax');

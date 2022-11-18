@@ -35,6 +35,9 @@
 					<li><a class="{{ request()->is('kasir*') ? 'active' : '' }}" href="{{route('kasir.index')}}">
 						<span class="fa fa-arrow-right">&nbsp;</span> Data Kasir
 					</a></li>
+					<li><a class="{{ request()->is('vendor*') ? 'active' : '' }}" href="{{route('Vendor.index')}}">
+						<span class="fa fa-arrow-right">&nbsp;</span> Data Vendor
+					</a></li>
 				</ul>
 			</li>
 			<li><a href="login.html"><em class="fa fa-power-off">&nbsp;</em> Logout</a></li>
