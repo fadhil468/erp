@@ -18,11 +18,10 @@ return new class extends Migration
             $table->string('id_produk');
             $table->string('nama_bahan_baku');
             $table->string('berat_satuan');
-            $table->integer('jumlah');
             $table->integer('harga');
             $table->string('vendor');
             $table->string('deskripsi_bahan_baku');
-            $table->integer('stok')->nullable();
+            $table->integer('stok');
             $table->string('foto')->nullable();
             $table->timestamps();
         });
