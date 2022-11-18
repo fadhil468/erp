@@ -62,6 +62,10 @@
                                     <label>Deskripsi Bahan Baku</label>
                                     <input class="form-control" type="text" name="deskripsi_bahan_baku" value="{{$bahanbaku->deskripsi_bahan_baku}}"placeholder="" required>
                                 </td>
+                                <td>
+                                    <label>Stok</label>
+                                    <input class="form-control" type="text" name="stok" value="{{$bahanbaku->stok}}"placeholder="" required>
+                                </td>
                                 <br>
                                 <td>
                                     <div class="button-wrapper">

@@ -66,6 +66,10 @@
                                     <label>Deskripsi Produk</label>
                                     <input class="form-control" type="text" name="deskripsi_produk" value="{{$barang->deskripsi_produk}}"placeholder="" required>
                                 </td>
+                                <td>
+                                    <label>Stok</label>
+                                    <input class="form-control" type="text" name="stok" value="{{$barang->stok}}" placeholder="" required>
+                                </td>
                                 <br>
                                 <td>
                                     <div class="button-wrapper">

@@ -70,6 +70,7 @@
                 <th scope="col">Berat</th>
                 <th scope="col">Kategori</th>
                 <th scope="col">Deskripsi</th>
+                <th scope="col">Stok</th>
                 <th scope="col">Foto</th>
 				<th scope="col">Action</th>
               </tr>
@@ -86,6 +87,7 @@
                     <td>{{$barang->berat}}</td>
                     <td>{{$barang->kategori}}</td>
                     <td>{{$barang->deskripsi_produk}}</td>
+                    <td>{{$barang->stok}}</td>
                     <td>
                         <img width="50" height="50"
                             src="{{ Storage::url('public/posts/') . $barang->foto}}" alt="">

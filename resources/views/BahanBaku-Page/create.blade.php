@@ -60,6 +60,11 @@
                                     <label>Deskripsi Produk</label>
                                     <input class="form-control" type="text" name="deskripsi_bahan_baku" placeholder="" required>
                                 </td>
+                                </td>
+                                <td>
+                                    <label>Stok</label>
+                                    <input class="form-control" type="text" name="stok" placeholder="" required>
+                                </td>
                                 <br>
                                 <td>
                                     <div class="button-wrapper">

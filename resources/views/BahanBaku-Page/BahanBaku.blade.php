@@ -69,6 +69,7 @@
                 <th scope="col">Harga</th>
                 <th scope="col">Vendor</th>
                 <th scope="col">Deskripsi</th>
+                <th scope="col">Stok</th>
                 <th scope="col">Foto</th>
 				<th scope="col">Action</th>
               </tr>
@@ -84,6 +85,7 @@
                     <td>Rp. @idr ($bahanbaku->harga)</td>
                     <td>{{$bahanbaku->vendor}}</td>
                     <td>{{$bahanbaku->deskripsi_bahan_baku}}</td>
+                    <td>{{$bahanbaku->stok}}</td>
                     <td>
                         <img width="50" height="50"
                             src="{{ Storage::url('public/posts/') . $bahanbaku->foto}}" alt="">

@@ -22,6 +22,7 @@ return new class extends Migration
             $table->integer('harga');
             $table->string('vendor');
             $table->string('deskripsi_bahan_baku');
+            $table->integer('stok')->nullable();
             $table->string('foto')->nullable();
             $table->timestamps();
         });

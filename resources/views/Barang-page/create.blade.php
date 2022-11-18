@@ -68,6 +68,10 @@
                                     </div>
                                 <br>
                                 <td>
+                                    <label>Stok</label>
+                                    <input class="form-control" type="text" name="stok" placeholder="" required>
+                                </td>
+                                <td>
                                     <div class="button-wrapper">
                                         <label for="inputImage" class="">
                                             <span class="d-none d-sm-block required-field">Upload new foto</span>

@@ -23,6 +23,7 @@ return new class extends Migration
             $table->integer('berat');
             $table->string('kategori');
             $table->string('deskripsi_produk');
+            $table->integer('stok')->nullable();
             $table->string('foto')->nullable();
             $table->timestamps();
         });
