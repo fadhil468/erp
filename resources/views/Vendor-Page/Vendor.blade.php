@@ -76,6 +76,7 @@
                 <th>No Telpon</th>
               </tr>
             </thead>
+			<!-- Batas belum dikerjakan -->
             <tbody class="text-center">
                 @foreach ($bom as $bm)
                 <tr>
