@@ -26,7 +26,7 @@ class VendorController extends Controller
      */
     public function create()
     {
-        //
+        return view('Vendor-page.create');
     }
 
     /**
@@ -37,7 +37,25 @@ class VendorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //validate form
+        $this->validate($request,[
+            'foto' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2408'
+        ]);
+
+        //upload image
+        $image = $request->file('foto');
+        $image->storeAs('public/posts',$image->hashName());
+        Vendor::create([
+            'foto'=> $image->hashName(),
+            'kode_vendor' => $request->kode_vendor,
+            'nama_vendor' => $request->nama_vendor,
+            'jenis_vendor' => $request->jenis_vendor,
+            'email_vendor' => $request->email_vendor,
+            'telpon_vendor' => $request->telpon_vendor,
+            'bahan_baku' => $request->bahan_baku,
+            'rekening_vendor' => $request->rekening_vendor,
+        ]);
+        return redirect()->route('vendor.index');
     }
 
     /**
@@ -59,7 +77,8 @@ class VendorController extends Controller
      */
     public function edit($id)
     {
-        //
+        $vendor = Vendor::find($vendor->id);
+        return view('Vendor-page.edit',compact('vendor'));
     }
 
     /**
@@ -69,9 +88,27 @@ class VendorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, vendor $vendor)
     {
-        //
+        //validate form
+        $this->validate($request,[
+            'foto' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2408'
+        ]);
+
+        //upload image
+        $image = $request->file('foto');
+        $image->storeAs('public/posts',$image->hashName());
+        $vendor->update([
+            'foto'=> $image->hashName(),
+            'kode_vendor' => $request->kode_vendor,
+            'nama_vendor' => $request->nama_vendor,
+            'jenis_vendor' => $request->jenis_vendor,
+            'email_vendor' => $request->email_vendor,
+            'telpon_vendor' => $request->telpon_vendor,
+            'bahan_baku' => $request->bahan_baku,
+            'rekening_vendor' => $request->rekening_vendor,
+        ]);
+        return redirect()->route('vendor.index');
     }
 
     /**
@@ -82,6 +119,8 @@ class VendorController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $delete = Vendor::find($id);
+        $delete->delete();
+        return redirect()->route('vendor.index');
     }
 }
