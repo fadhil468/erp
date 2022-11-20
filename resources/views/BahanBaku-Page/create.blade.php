@@ -25,48 +25,48 @@
                 <h4 class="card-header">Tambah Data</h4>
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-xs-6 col-md-6 col-lg-6 no-padding">
+                        <div class="col-xs-6 col-md-6 col-lg-12 no-padding">
                             <div style="margin-left: 1rem">
-                                <td>
+                                <div class="col-md-6">
                                     <label>Kode Produk</label>
                                     <input class="form-control" type="text" name="id_produk" placeholder="" required>
-                                </td>
-                                <td>
+                                </div>
+                                <div class="col-md-6">
                                     <label>Nama Bahan Baku</label>
                                     <input class="form-control" type="text" name="nama_bahan_baku" placeholder="" required>
-                                </td>
-                                </td>
-                                <td>
+                                </div>
+     
+                                <div class="col-md-6">
                                     <label>Berat Satuan</label>
                                     <input class="form-control" type="text" name="berat_satuan" placeholder="" required>
-                                </td>
-                                </td>
-                                <td>
+                                </div>
+
+                                <div class="col-md-6">
                                     <label>Jumlah</label>
                                     <input class="form-control" type="text" name="jumlah" placeholder="" required>
-                                </td>
-                                </td>
-                                <td>
+                                </div>
+
+                                <div class="col-md-6">
                                     <label>Harga</label>
                                     <input class="form-control" type="text" name="harga" placeholder="" required>
-                                </td>
-                                </td>
-                                <td>
+                                </div>
+
+                                <div class="col-md-6">
                                     <label>Vendor</label>
                                     <input class="form-control" type="text" name="vendor" placeholder="" required>
-                                </td>
-                                </td>
-                                <td>
+                                </div>
+
+                                <div class="col-md-6">
                                     <label>Deskripsi Produk</label>
                                     <input class="form-control" type="text" name="deskripsi_bahan_baku" placeholder="" required>
-                                </td>
-                                </td>
-                                <td>
+                                </div>
+
+                                <div class="col-md-6">
                                     <label>Stok</label>
                                     <input class="form-control" type="text" name="stok" placeholder="" required>
-                                </td>
+                                </div>
                                 <br>
-                                <td>
+                                <div class="col-md-6">
                                     <div class="button-wrapper">
                                         <label for="inputImage" class="">
                                             <span class="d-none d-sm-block required-field">Upload new foto</span>
@@ -77,12 +77,12 @@
                                         <p class="text-muted mt-1">Allowed JPG, JPEG, GIF or PNG. Max size of 2MB</p>
                                     </div>
                                 </td>
-                                <br>
-                                <td>
-                                    <button type="submit" class="btn btn-info" style="margin-left: 1.5rem">Simpan Data</button>
-                                </td>
+                                <br>                           
                             </div>
                         </div>
+                    </div>
+                    <div>
+                        <button type="submit" class="btn btn-info" style="margin-left: 1.5rem">Simpan Data</button>
                     </div>
                 </div>
             </div>

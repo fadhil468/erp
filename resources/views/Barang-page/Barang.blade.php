@@ -11,13 +11,13 @@
 				<li><a href="#">
 					<em class="fa fa-home"></em>
 				</a></li>
-				<li class="active">Dashboard</li>
+				<li class="active">Data Barang</li>
 			</ol>
 		</div><!--/.row-->
 		
 		<div class="row">
 			<div class="col-lg-12">
-				<h1 class="page-header">Dashboard</h1>
+				<h1 class="page-header">Data Barang</h1>
 			</div>
 		</div><!--/.row-->
 		
@@ -57,23 +57,26 @@
 				</div>
 			</div><!--/.row-->
 		</div>
-        <table class="table">
+        <table class="table table-bordered table-striped table-hover">
             <thead>
                 <a type="button" class="btn btn-primary btn-lg" href="{{ route ('barang.create') }} ">+</a>
               <tr>
-                <th scope="col">No</th>
-                <th scope="col">Kode Produk</th>
-                <th scope="col">Nama Produk</th>
-                <th scope="col">Ukuran Panjang</th>
-                <th scope="col">Ukuran Lebar</th>
-                <th scope="col">Harga</th>
-                <th scope="col">Berat</th>
-                <th scope="col">Kategori</th>
-                <th scope="col">Deskripsi</th>
-                <th scope="col">Stok</th>
-                <th scope="col">Foto</th>
-				<th scope="col">Action</th>
+                <th rowspan="2">No</th>
+                <th rowspan="2">Kode Produk</th>
+                <th rowspan="2">Nama Produk</th>
+                <th colspan="2">Ukuran</th>
+                <th rowspan="2">Harga</th>
+                <th rowspan="2">Berat</th>
+                <th rowspan="2">Size</th>
+                <th rowspan="2">Deskripsi</th>
+                <th rowspan="2">penjualan</th>
+                <th rowspan="2">Foto</th>
+				<th rowspan="2">Action</th>
               </tr>
+			  <tr>
+				<th>Ukuran Panjang</th>
+				<th>Ukuran Lebar</th>
+			  </tr>
             </thead>
             <tbody>
                 @foreach ($barang as $barang )
@@ -81,16 +84,22 @@
                     <td>{{$barang->id}}</td>
                     <td>{{$barang->kode_produk}}</td>
                     <td>{{$barang->nama_produk}}</td>
-                    <td>{{$barang->ukuran_panjang}}</td>
-                    <td>{{$barang->ukuran_lebar}}</td>
+                    <td>{{$barang->ukuran_panjang}} <small>cm</small></td>
+                    <td>{{$barang->ukuran_lebar}} <small>cm</small></td>
                     <td>Rp. @idr ($barang->harga)</td>
-                    <td>{{$barang->berat}}</td>
-                    <td>{{$barang->kategori}}</td>
+                    <td>{{$barang->berat}} <small>gram</small></td>
+                    <td>{{$barang->size}}</td>
                     <td>{{$barang->deskripsi_produk}}</td>
-                    <td>{{$barang->stok}}</td>
                     <td>
-                        <img width="50" height="50"
-                            src="{{ Storage::url('public/posts/') . $barang->foto}}" alt="">
+						@if ($barang->penjualan == 0)
+							<span class="badge bg-danger">Belum Tersedia</span>
+						@else
+							{{$barang->penjualan}}
+						@endif
+					</td>
+                    <td>
+						<img width="50" height="50"
+						src="{{ Storage::url('public/posts/') . $barang->foto }}">
                     <td>
                         <form onsubmit="return confirm('Apakah Anda Yakin ?');"
                             action="{{ route('barang.destroy', $barang->id) }}" method="POST">

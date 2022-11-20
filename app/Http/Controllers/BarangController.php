@@ -53,8 +53,9 @@ class BarangController extends Controller
             'ukuran_lebar' => $request->ukuran_lebar,
             'harga' => $request->harga,
             'berat' => $request->berat,
-            'kategori' => $request->kategori,
+            'size' => $request->size,
             'deskripsi_produk' => $request->deskripsi_produk,
+            'penjualan' => 0
         ]);
         return redirect()->route('barang.index');
     }
@@ -103,8 +104,9 @@ class BarangController extends Controller
                     'ukuran_lebar' => $request->ukuran_lebar,
                     'harga' => $request->harga,
                     'berat' => $request->berat,
-                    'kategori' => $request->kategori,
+                    'size' => $request->size,
                     'deskripsi_produk' => $request->deskripsi_produk,
+                    'penjualan' => $request->penjualan
                 ]);
                 return redirect()->route('barang.index');
     }

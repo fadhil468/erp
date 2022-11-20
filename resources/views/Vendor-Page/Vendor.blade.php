@@ -11,13 +11,13 @@
 				<li><a href="#">
 					<em class="fa fa-home"></em>
 				</a></li>
-				<li class="active">Dashboard</li>
+				<li class="active">Data Vendor</li>
 			</ol>
 		</div><!--/.row-->
 		
 		<div class="row">
 			<div class="col-lg-12">
-				<h1 class="page-header">Dashboard</h1>
+				<h1 class="page-header">Data Vendor</h1>
 			</div>
 		</div><!--/.row-->
 		
@@ -57,57 +57,48 @@
 				</div>
 			</div><!--/.row-->
 		</div>
-		
         <table class="table table-bordered table-striped table-hover">
             <thead>
+				<a type="button" class="btn btn-primary btn-lg" href="{{ route ('bom.create') }} ">+</a>
               <tr>
                 <th rowspan="2">No</th>
-                <th colspan="3">Data Pemesan</th>
-                <th colspan="4">Data Produk</th>
-				<th rowspan="2">Jumlah Pesanan</th>
-				<th rowspan="2">Total Harga</th>
-				<th rowspan="2">Status</th>
-				<th rowspan="2">Action</th>
+                <th rowspan="2">Kode Vendor</th>
+                <th rowspan="2">Nama Vendor</th>
+                <th rowspan="2">Jenis Vendor</th>
+                <th colspan="2">Kontak</th>
+                <th rowspan="2">Bahan</th>
+                <th rowspan="2">Rekening</th>
+				<th rowspan="2">Gambar</th>
+                <th rowspan="2">Action</th>
               </tr>
-			  <tr>
-                <th >Nama Pemesan</th>
-                <th >Kontak Pemesan</th>
-                <th >Alamat Pemesan</th>
-				<th >Kode Produk</th>
-                <th >Nama Produk</th>
-                <th >Size</th>
-				<th >Harga</th>
-			  </tr>
+              <tr>
+                <th>E-mail</th>
+                <th>No Telpon</th>
+              </tr>
             </thead>
-            <tbody>
-                @foreach ($pemesanan as $pemesanan )
-                <tr style="text-align: center">
-                    <td>{{$pemesanan->id}}</td>
-                    <td>{{$pemesanan->nama_pemesan}}</td>
-					<td>{{$pemesanan->kontak_pemesan}}</td>
-                    <td>{{$pemesanan->alamat_pemesan}}</td>
-                    <td>{{$pemesanan->kode_produk}}</td>
-                    <td>{{$pemesanan->nama_produk}}</td>
-                    <td>{{$pemesanan->size}}</td>
-                    <td>{{$pemesanan->harga}}</td>
-                    <td>{{$pemesanan->jumlah}}</td>
-                    <td>Rp. @idr($pemesanan->total)</td>
+            <tbody class="text-center">
+                @foreach ($bom as $bm)
+                <tr>
+                    <td>{{$bm->id}}</td>
+                    <td>{{$bm->kode}}</td>
+                    <td>{{$bm->nama}}</td>
+                    <td>{{$bm->size}}</td>
+                    <td>{{$bm->kain}}</td>
+                    <td>{{$bm->benang}}</td>
+                    <td>{{$bm->dakron}}</td>
+                    <td>{{$bm->quantity}}</td>
+                    <td>{{$bm->estimasi}}</td>
                     <td>
-						@if ($pemesanan->status == 0)
-							Belum diproses
-						@else
-							sudah diproses
-						@endif
-					</td>
-                    <td>
-					<form onsubmit="return confirm('Apakah Anda Yakin ?');"
-                            action="{{ route('pemesanan.destroy', $pemesanan->id) }}" method="POST">
-                            <a href="{{ route('pemesanan.edit', $pemesanan->id) }}"
+                        <form onsubmit="return confirm('Apakah Anda Yakin ?');"
+                            action="{{ route('bom.destroy', $bm->id) }}" method="POST">
+                            <a href="{{ route('bom.edit', $bm->id) }}"
                                 class="btn btn-sm btn-info"><i class="fa fa-pencil" aria-hidden="true"></i></a>
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-sm btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></button>
                         </form>
+                        {{-- <a href="{{ route('bom.cetak', $bm->id) }}"
+                            class="btn btn-sm btn-info"><i class="fa fa-pencil" aria-hidden="true"></i></a> --}}
                     </td>
                 </tr>
                 @endforeach

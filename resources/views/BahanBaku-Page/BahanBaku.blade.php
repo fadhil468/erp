@@ -11,13 +11,13 @@
 				<li><a href="#">
 					<em class="fa fa-home"></em>
 				</a></li>
-				<li class="active">Dashboard</li>
+				<li class="active">Data Bahan Baku</li>
 			</ol>
 		</div><!--/.row-->
 		
 		<div class="row">
 			<div class="col-lg-12">
-				<h1 class="page-header">Dashboard</h1>
+				<h1 class="page-header">Data Bahan Baku</h1>
 			</div>
 		</div><!--/.row-->
 		
@@ -57,7 +57,7 @@
 				</div>
 			</div><!--/.row-->
 		</div>
-        <table class="table">
+        <table class="table table-bordered table-striped table-hover">
             <thead>
 				<a type="button" class="btn btn-primary btn-lg" href="{{ route ('bahanbaku.create') }} ">+</a>
               <tr>
@@ -65,7 +65,6 @@
                 <th scope="col">ID Produk</th>
                 <th scope="col">Nama Bahan Baku</th>
                 <th scope="col">Berat Satuan</th>
-                <th scope="col">Jumlah</th>
                 <th scope="col">Harga</th>
                 <th scope="col">Vendor</th>
                 <th scope="col">Deskripsi</th>
@@ -81,11 +80,16 @@
                     <td>{{$bahanbaku->id_produk}}</td>
                     <td>{{$bahanbaku->nama_bahan_baku}}</td>
                     <td>{{$bahanbaku->berat_satuan}}</td>
-                    <td>{{$bahanbaku->jumlah}}</td>
                     <td>Rp. @idr ($bahanbaku->harga)</td>
                     <td>{{$bahanbaku->vendor}}</td>
                     <td>{{$bahanbaku->deskripsi_bahan_baku}}</td>
-                    <td>{{$bahanbaku->stok}}</td>
+                    <td>
+						@if ($bahanbaku->stok == 0)
+							<span class="badge bg-danger">Belum Tersedia</span>
+						@else
+							{{$bahanbaku->stok}}
+						@endif
+					</td>
                     <td>
                         <img width="50" height="50"
                             src="{{ Storage::url('public/posts/') . $bahanbaku->foto}}" alt="">

@@ -26,52 +26,51 @@
                 <h4 class="card-header">Tambah Data</h4>
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-xs-6 col-md-6 col-lg-6 no-padding">
+                        <div class="col-xs-6 col-md-6 col-lg-12 no-padding">
                             <div style="margin-left: 1rem">
-                                <td>
+                                <div class="col-md-6">
                                     <label>Kode Produk</label>
                                     <input class="form-control" type="text" name="kode_produk" value="{{$barang->kode_produk}}" placeholder="" required>
-                                </td>
-                                <td>
+                                </div>
+                                <div class="col-md-6">
                                     <label>Nama Produk</label>
                                     <input class="form-control" type="text" name="nama_produk" value="{{$barang->nama_produk}}" placeholder="" required>
-                                </td>
-                                </td>
-                                <td>
+                                </div>
+                                <div class="col-md-6">
                                     <label>Ukuran Panjang</label>
                                     <input class="form-control" type="text" name="ukuran_panjang" value="{{$barang->ukuran_panjang}}" placeholder="" required>
-                                </td>
-                                </td>
-                                <td>
+                                </div>
+                                <div class="col-md-6">
                                     <label>Ukuran Lebar</label>
                                     <input class="form-control" type="text" name="ukuran_lebar" value="{{$barang->ukuran_lebar}}"placeholder="" required>
-                                </td>
-                                </td>
-                                <td>
+                                </div>
+                                <div class="col-md-6">
                                     <label>Harga</label>
                                     <input class="form-control" type="text" name="harga" value="{{$barang->harga}}" placeholder="" required>
-                                </td>
-                                </td>
-                                <td>
+                                </div>
+                                <div class="col-md-6">
                                     <label>Berat</label>
                                     <input class="form-control" type="text" name="berat" value="{{$barang->berat}}" placeholder="" required>
-                                </td>
-                                </td>
-                                <td>
-                                    <label>Kategori</label>
-                                    <input class="form-control" type="text" name="kategori" value="{{$barang->kategori}} "placeholder="" required>
-                                </td>
-                                </td>
-                                <td>
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Size</label>
+                                    <select class="form-control" type="text" name="size" placeholder="" required>
+                                        <option readonly selected value="{{$barang->size}}">{{$barang->size}}</option>
+                                        <option value="S">Small</option>
+                                        <option value="M">Medium</option>
+                                        <option value="L">Large</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
                                     <label>Deskripsi Produk</label>
                                     <input class="form-control" type="text" name="deskripsi_produk" value="{{$barang->deskripsi_produk}}"placeholder="" required>
-                                </td>
-                                <td>
-                                    <label>Stok</label>
-                                    <input class="form-control" type="text" name="stok" value="{{$barang->stok}}" placeholder="" required>
-                                </td>
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Penjualan</label>
+                                    <input class="form-control" type="text" name="penjualan" value="{{$barang->penjualan}}" placeholder="" readonly>
+                                </div>
                                 <br>
-                                <td>
+                                <div class="col-md-6">
                                     <div class="button-wrapper">
                                         <label for="inputImage" class="">
                                             <span class="d-none d-sm-block required-field">Upload new foto</span>
@@ -81,11 +80,11 @@
                                         </label>
                                         <p class="text-muted mt-1">Allowed JPG, JPEG, GIF or PNG. Max size of 2MB</p>
                                     </div>
-                                </td>
+                                </div>
                                 <br>
-                                <td>
+                                <div>
                                     <button type="submit" class="btn btn-info" style="margin-left: 1.5rem">Simpan Data</button>
-                                </td>
+                                </div>
                             </div>
                         </div>
                     </div>
