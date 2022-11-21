@@ -35,7 +35,7 @@
 					<li><a class="{{ request()->is('kasir*') ? 'active' : '' }}" href="{{route('kasir.index')}}">
 						<span class="fa fa-arrow-right">&nbsp;</span> Data Kasir
 					</a></li>
-					<li><a class="{{ request()->is('vendor*') ? 'active' : '' }}" href="{{route('Vendor.index')}}">
+					<li><a class="{{ request()->is('vendor*') ? 'active' : '' }}" href="{{route('vendor.index')}}">
 						<span class="fa fa-arrow-right">&nbsp;</span> Data Vendor
 					</a></li>
 				</ul>
