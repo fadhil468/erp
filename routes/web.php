@@ -6,6 +6,7 @@ use App\Http\Controllers\PemesananController;
 use App\Http\Controllers\BahanBakuController;
 use App\Http\Controllers\BomController;
 use App\Http\Controllers\KasirController;
+use App\Http\Controllers\VendorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,3 +45,5 @@ Route::post('/kasir/ajax3',[KasirController::class,'ajax3'])->name('kasir.ajax3'
 Route::post('/kasir/ajax4',[KasirController::class,'ajax4'])->name('kasir.ajax4');
 Route::post('/kasir/ajax5',[KasirController::class,'ajax5'])->name('kasir.ajax5');
 Route::post('/kasir/ajax6',[KasirController::class,'ajax6'])->name('kasir.ajax6');
+// Vendor
+Route::resource('/vendor',VendorController::class);

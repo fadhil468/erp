@@ -59,14 +59,14 @@
 		</div>
         <table class="table table-bordered table-striped table-hover">
             <thead>
-				<a type="button" class="btn btn-primary btn-lg" href="{{ route ('bom.create') }} ">+</a>
+				<a type="button" class="btn btn-primary btn-lg" href="{{ route ('vendor.create') }}">+</a>
               <tr>
                 <th rowspan="2">No</th>
                 <th rowspan="2">Kode Vendor</th>
                 <th rowspan="2">Nama Vendor</th>
                 <th rowspan="2">Jenis Vendor</th>
                 <th colspan="2">Kontak</th>
-                <th rowspan="2">Bahan</th>
+                <th rowspan="2">Bahan Baku</th>
                 <th rowspan="2">Rekening</th>
 				<th rowspan="2">Gambar</th>
                 <th rowspan="2">Action</th>
@@ -76,29 +76,31 @@
                 <th>No Telpon</th>
               </tr>
             </thead>
+			<!-- Batas belum dikerjakan -->
             <tbody class="text-center">
-                @foreach ($bom as $bm)
+                @foreach ($vendor as $ven)
                 <tr>
-                    <td>{{$bm->id}}</td>
-                    <td>{{$bm->kode}}</td>
-                    <td>{{$bm->nama}}</td>
-                    <td>{{$bm->size}}</td>
-                    <td>{{$bm->kain}}</td>
-                    <td>{{$bm->benang}}</td>
-                    <td>{{$bm->dakron}}</td>
-                    <td>{{$bm->quantity}}</td>
-                    <td>{{$bm->estimasi}}</td>
+                    <td>{{$ven->id}}</td>
+                    <td>{{$ven->kode_vendor}}</td>
+                    <td>{{$ven->nama_vendor}}</td>
+                    <td>{{$ven->jenis_vendor}}</td>
+                    <td>{{$ven->email_vendor}}</td>
+                    <td>{{$ven->telpon_vendor}}</td>
+                    <td>{{$ven->bahan_baku}}</td>
+                    <td>{{$ven->rekening_vendor}}</td>
                     <td>
-                        <form onsubmit="return confirm('Apakah Anda Yakin ?');"
-                            action="{{ route('bom.destroy', $bm->id) }}" method="POST">
-                            <a href="{{ route('bom.edit', $bm->id) }}"
+						<img width="50" height="50"
+						src="{{ Storage::url('public/posts/') . $vendor->foto }}">
+                    <td>
+                    <td>
+						<form onsubmit="return confirm('Apakah Anda Yakin ?');"
+                            action="{{ route('vendor.destroy', $vendor->id) }}" method="POST">
+                            <a href="{{ route('vendor.edit', $vendor->id) }}"
                                 class="btn btn-sm btn-info"><i class="fa fa-pencil" aria-hidden="true"></i></a>
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-sm btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></button>
                         </form>
-                        {{-- <a href="{{ route('bom.cetak', $bm->id) }}"
-                            class="btn btn-sm btn-info"><i class="fa fa-pencil" aria-hidden="true"></i></a> --}}
                     </td>
                 </tr>
                 @endforeach
