@@ -96,9 +96,9 @@
                     <td>{{$pemesanan->size}}</td>
                     <td>{{$pemesanan->harga}}</td>
                     <td>{{$pemesanan->jumlah}}</td>
-                    <td>{{$pemesanan->kain}}</td>
-                    <td>{{$pemesanan->benang}}</td>
-                    <td>{{$pemesanan->dakron}}</td>
+                    <td>{{$pemesanan->kain}} <small>m</small></td>
+                    <td>{{$pemesanan->benang}} <small>m</small></td>
+                    <td>{{$pemesanan->dakron}} <small>g</small></td>
                     <td>Rp. @idr($pemesanan->total)</td>
                     <td>
 						@if ($pemesanan->status == 0)

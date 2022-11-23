@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Barang;
 use App\Models\Pemesanan;
+use App\Models\Bom;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class KasirController extends Controller
 {
@@ -36,8 +38,40 @@ class KasirController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request )
     {
+        // Start Mo (Material Order)
+   
+        
+        if($request->nama_produk == 'Bantal' && $request->size =='S')
+        {
+            $kain = bom::where('id',1)->first();
+            $benang = bom::where('id',1)->first();
+            $dakron = bom::where('id',1)->first();
+        }
+        elseif($request->nama_produk == 'Bantal' && $request->size =='M')
+        {
+            $kain = bom::where('id',2)->first();
+            $benang = bom::where('id',2)->first();
+            $dakron = bom::where('id',2)->first();
+        }
+        elseif($request->nama_produk == 'Bantal' && $request->size =='L')
+        {
+            $kain = bom::where('id',3)->first();
+            $benang = bom::where('id',3)->first();
+            $dakron = bom::where('id',3)->first();
+        }
+            //bahan baku bom x jumlah pesanan
+            $get_kain = $kain->kain * $request->jumlah ;
+            $get_benang = $benang->benang * $request->jumlah ;
+            $get_dakron = $dakron->dakron * $request->jumlah ;
+        //end mo (making order)
+
+        $boms=bom::find($request->id);
+
+        $time = Carbon::now();
+        $estimasi = $boms->estimasi * $request->jumlah;
+        
         Pemesanan::create([
             'id_produk'=> $request->id,
             'nama_pemesan'=> $request->nama_pemesan,
@@ -48,6 +82,9 @@ class KasirController extends Controller
             'size'=>$request->size,
             'harga'=>$request->harga,
             'jumlah'=>$request->jumlah,
+            'kain'=>$get_kain,
+            'benang'=>$get_benang,
+            'dakron'=>$get_dakron,
             'quantity'=>1,
             'total'=>$request->total,
             'estimasi'=>$request->estimasi
