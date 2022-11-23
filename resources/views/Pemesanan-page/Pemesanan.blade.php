@@ -60,11 +60,13 @@
 		
         <table class="table table-bordered table-striped table-hover">
             <thead>
+				<a type="button" class="btn btn-primary btn-lg" href="{{ route ('pemesanan.create') }} ">+</a>
               <tr>
                 <th rowspan="2">No</th>
                 <th colspan="3">Data Pemesan</th>
                 <th colspan="4">Data Produk</th>
 				<th rowspan="2">Jumlah Pesanan</th>
+                <th colspan="3">Data Bahan Baku</th>
 				<th rowspan="2">Total Harga</th>
 				<th rowspan="2">Status</th>
 				<th rowspan="2">Action</th>
@@ -77,6 +79,9 @@
                 <th >Nama Produk</th>
                 <th >Size</th>
 				<th >Harga</th>
+				<th >Kain</th>
+				<th >Benang</th>
+				<th >Dakron</th>
 			  </tr>
             </thead>
             <tbody>
@@ -91,6 +96,9 @@
                     <td>{{$pemesanan->size}}</td>
                     <td>{{$pemesanan->harga}}</td>
                     <td>{{$pemesanan->jumlah}}</td>
+                    <td>{{$pemesanan->kain}}</td>
+                    <td>{{$pemesanan->benang}}</td>
+                    <td>{{$pemesanan->dakron}}</td>
                     <td>Rp. @idr($pemesanan->total)</td>
                     <td>
 						@if ($pemesanan->status == 0)

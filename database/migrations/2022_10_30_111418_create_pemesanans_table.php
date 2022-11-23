@@ -27,11 +27,13 @@ return new class extends Migration
             $table->integer('berat');
             $table->integer('jumlah');
             $table->string('size');
+            $table->integer('quantity');
             $table->string('status');
             $table->integer('total');
-            $table->string('kain');
-            $table->string('benang');
-            $table->string('dakron');
+            $table->string('kain')->nullable();
+            $table->string('benang')->nullable();
+            $table->string('dakron')->nullable();
+            $table->string('estimasi')->nullable();
             $table->timestamps();
         });
     }

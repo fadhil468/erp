@@ -109,6 +109,8 @@ class BomController extends Controller
         $delete->delete();
         return redirect()->route('bom.index');
     }
+
+    //java script
     public function bom(Request $request)
     {
         $select = $request->get('select');

@@ -29,7 +29,7 @@
                         <div class="col-xs-6 col-md-6 col-lg-6 no-padding">
                             <div style="margin-left: 1rem">
                                 <td>
-                                    <label>Nama Pembeli</label>
+                                    <label>Nama Pemesan</label>
                                     <input class="form-control" type="text" name="nama_pembeli" value="{{$pemesanan->nama_pembeli}}" placeholder="" required>
                                 </td>
                                 <td>
