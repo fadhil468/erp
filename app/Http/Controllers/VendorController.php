@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\vendor;
+use App\Models\bahanbaku;
 use Illuminate\Support\Facades\DB;
 
 class VendorController extends Controller
@@ -26,7 +27,8 @@ class VendorController extends Controller
      */
     public function create()
     {
-        return view('Vendor-page.create');
+        $bahan = bahanbaku::all();
+        return view('Vendor-page.create',compact('bahan'));
     }
 
     /**
