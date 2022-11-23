@@ -91,17 +91,17 @@
                     <td>
 						<img width="50" height="50"
 						src="{{ Storage::url('public/posts/') . $ven->foto }}">
-                    <td>
-                    <td>
-						<form onsubmit="return confirm('Apakah Anda Yakin ?');"
-                            action="{{ route('vendor.destroy', $ven->id) }}" method="POST">
-                            <a href="{{ route('vendor.edit', $ven->id) }}"
-                                class="btn btn-sm btn-info"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-sm btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></button>
-                        </form>
-                    </td>
+					</td>
+						<td>
+							<form onsubmit="return confirm('Apakah Anda Yakin ?');"
+								action="{{ route('vendor.destroy', $ven->id) }}" method="POST">
+								<a href="{{ route('vendor.edit', $ven->id) }}"
+									class="btn btn-sm btn-info"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+								@csrf
+								@method('DELETE')
+								<button type="submit" class="btn btn-sm btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></button>
+							</form>
+						</td>
                 </tr>
                 @endforeach
             </tbody>
