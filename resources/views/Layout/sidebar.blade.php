@@ -30,7 +30,7 @@
 						<span class="fa fa-arrow-right">&nbsp;</span> Data Bom
 					</a></li>
 					<li><a class="{{ request()->is('pemesanan*') ? 'active' : '' }}" href="{{route('pemesanan.index')}}">
-						<span class="fa fa-arrow-right">&nbsp;</span> Data Pemesanan
+						<span class="fa fa-arrow-right">&nbsp;</span> Data MO
 					</a></li>
 					<li><a class="{{ request()->is('kasir*') ? 'active' : '' }}" href="{{route('kasir.index')}}">
 						<span class="fa fa-arrow-right">&nbsp;</span> Data Kasir

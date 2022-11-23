@@ -41,17 +41,18 @@ class KasirController extends Controller
         Pemesanan::create([
             'id_produk'=> $request->id,
             'nama_pemesan'=> $request->nama_pemesan,
-            'kontak_pemesan'=> $request->nama_pemesan,
-            'alamat_pemesan'=> $request->nama_pemesan,
+            'kontak_pemesan'=> $request->kontak_pemesan,
+            'alamat_pemesan'=> $request->alamat_pemesan,
             'kode_produk' =>$request->kode_produk,
             'nama_produk' =>$request->nama_produk,
-            'kain'=>$request->kain,
-            'benang'=>$request->benang,
-            'dakron'=>$request->dakron,
+            'size'=>$request->size,
+            'harga'=>$request->harga,
+            'jumlah'=>$request->jumlah,
             'quantity'=>1,
+            'total'=>$request->total,
             'estimasi'=>$request->estimasi
         ]);
-        return redirect()->route('bom.index');
+        return redirect()->route('pemesanan.index');
     }
 
     /**

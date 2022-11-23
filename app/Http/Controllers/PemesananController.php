@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Pemesanan;
 use Illuminate\Support\Facades\DB;
 use App\Models\barang;
+use App\Models\bom;
 
 class PemesananController extends Controller
 {
@@ -27,8 +28,7 @@ class PemesananController extends Controller
      */
     public function create()
     {
-        $barang = barang::all();
-        return view('Pemesanan-page.create',compact('barang'));
+        return view('pemesanan-page.create');
     }
 
     /**
