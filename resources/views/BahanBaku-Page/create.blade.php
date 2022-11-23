@@ -42,11 +42,6 @@
                                 </div>
 
                                 <div class="col-md-6">
-                                    <label>Jumlah</label>
-                                    <input class="form-control" type="text" name="jumlah" placeholder="" required>
-                                </div>
-
-                                <div class="col-md-6">
                                     <label>Harga</label>
                                     <input class="form-control" type="text" name="harga" placeholder="" required>
                                 </div>
