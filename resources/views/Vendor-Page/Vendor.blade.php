@@ -90,12 +90,12 @@
                     <td>{{$ven->rekening_vendor}}</td>
                     <td>
 						<img width="50" height="50"
-						src="{{ Storage::url('public/posts/') . $vendor->foto }}">
+						src="{{ Storage::url('public/posts/') . $ven->foto }}">
                     <td>
                     <td>
 						<form onsubmit="return confirm('Apakah Anda Yakin ?');"
-                            action="{{ route('vendor.destroy', $vendor->id) }}" method="POST">
-                            <a href="{{ route('vendor.edit', $vendor->id) }}"
+                            action="{{ route('vendor.destroy', $ven->id) }}" method="POST">
+                            <a href="{{ route('vendor.edit', $ven->id) }}"
                                 class="btn btn-sm btn-info"><i class="fa fa-pencil" aria-hidden="true"></i></a>
                             @csrf
                             @method('DELETE')
