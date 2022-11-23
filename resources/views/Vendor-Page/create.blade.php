@@ -53,10 +53,13 @@
                                 </div>
                                 <div class="col-md-6">
                                     <label>Bahan Baku</label>
-                                    <select class="form-control" type="text" name="bahan_baku" placeholder="" required>
-                                    <option disable selected>-- Pilih Bahan --</option>
-                                        <option value="K">Kain</option>
-                                        <option value="B">Benang</option>
+                                    <select id="id" class="form-control" type="text" name="bahan_baku" required >
+                                        <option disabled selected > Pilih </option>
+                                        @foreach ($bahan as $bahans)
+                                            <option value="{{$bahans->nama_bahan_baku}}">
+                                                {{$bahans->nama_bahan_baku}}
+                                            </option>
+                                        @endforeach
                                     </select>
                                 </div>
                                 <div class="col-md-6">
