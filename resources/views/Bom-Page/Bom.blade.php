@@ -83,9 +83,9 @@
                     <td>{{$bm->kode}}</td>
                     <td>{{$bm->nama}}</td>
                     <td>{{$bm->size}}</td>
-                    <td>{{$bm->kain}}</td>
-                    <td>{{$bm->benang}}</td>
-                    <td>{{$bm->dakron}}</td>
+                    <td>{{$bm->kain}} <small>m</small></td>
+                    <td>{{$bm->benang}} <small>roll</small></td>
+                    <td>{{$bm->dakron}} <small>g</small></td>
                     <td>{{$bm->quantity}}</td>
                     <td>{{$bm->estimasi}}</td>
                     <td>

@@ -44,11 +44,6 @@
                                 </div>
 
                                 <div class="col-md-6">
-                                    <label>Jumlah</label>
-                                    <input class="form-control" type="text" name="jumlah" value="{{$bahanbaku->jumlah}}"placeholder="" required>
-                                </div>
-
-                                <div class="col-md-6">
                                     <label>Harga</label>
                                     <input class="form-control" type="text" name="harga" value="{{$bahanbaku->harga}}" placeholder="" required>
                                 </div>
