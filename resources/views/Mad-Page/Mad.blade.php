@@ -5,20 +5,19 @@
 <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
 @include('Layout.sidebar')
 @include('sweetalert::alert')
-
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
 		<div class="row">
 			<ol class="breadcrumb">
 				<li><a href="#">
 					<em class="fa fa-home"></em>
 				</a></li>
-				<li class="active">Dashboard</li>
+				<li class="active">Mark As Done</li>
 			</ol>
 		</div><!--/.row-->
 		
 		<div class="row">
 			<div class="col-lg-12">
-				<h1 class="page-header">Dashboard</h1>
+				<h1 class="page-header">Mark As Done</h1>
 			</div>
 		</div><!--/.row-->
 		
@@ -61,7 +60,6 @@
 		
         <table class="table table-bordered table-striped table-hover">
             <thead>
-				<a type="button" class="btn btn-primary btn-lg" href="{{ route ('pemesanan.create') }} ">+</a>
               <tr>
                 <th rowspan="2">No</th>
                 <th rowspan="2">Kode Pesanan</th>
@@ -89,38 +87,27 @@
 			  </tr>
             </thead>
             <tbody>
-                @foreach ($pemesanan as $pemesanan )
+                @foreach ($mads as $mad )
                 <tr style="text-align: center">
-                    <td>{{$pemesanan->id}}</td>
-                    <td>{!! DNS1D::getBarcodeHtml($pemesanan->kode_pesanan,'C39', 0.5,25) !!}
+                    <td>{{$mad->id}}</td>
+                    <td>{!! DNS1D::getBarcodeHtml($mad->kode_pesanan,'C39', 0.5,25) !!}
 							<p style="font-size: 10px; margin-top: 5px">
-							{{$pemesanan->kode_pesanan}}</p>
+							{{$mad->kode_pesanan}}</p>
 					</td>
-                    <td>{{$pemesanan->nama_pemesan}}</td>
-					<td>{{$pemesanan->kontak_pemesan}}</td>
-                    <td>{{$pemesanan->alamat_pemesan}}</td>
-                    <td>{{$pemesanan->kode_produk}}</td>
-                    <td>{{$pemesanan->nama_produk}}</td>
-                    <td>{{$pemesanan->size}}</td>
-                    <td>{{$pemesanan->harga}}</td>
-                    <td>{{$pemesanan->jumlah}}</td>
-                    <td>{{$pemesanan->kain}} <small>m</small></td>
-                    <td>{{$pemesanan->benang}} <small>m</small></td>
-                    <td>{{$pemesanan->dakron}} <small>g</small></td>
-                    <td>Rp. @idr($pemesanan->total)</td>
-                    <td>
-						@if ($pemesanan->status == 0)
-							Belum diproses
-						@else
-							sudah diproses
-						@endif
-					</td>
-					<td>
-						{{$pemesanan->tanggal}}
-					</td>
-					<td>
-						{{$pemesanan->estimasi}}
-					</td>
+                    <td>{{$mad->nama_pemesan}}</td>
+					<td>{{$mad->kontak_pemesan}}</td>
+                    <td>{{$mad->alamat_pemesan}}</td>
+                    <td>{{$mad->kode_produk}}</td>
+                    <td>{{$mad->nama_produk}}</td>
+                    <td>{{$mad->size}}</td>
+                    <td>{{$mad->harga}}</td>
+                    <td>{{$mad->jumlah}}</td>
+                    <td>{{$mad->kain}} <small>m</small></td>
+                    <td>{{$mad->benang}} <small>m</small></td>
+                    <td>{{$mad->dakron}} <small>g</small></td>
+                    <td>Rp. @idr($mad->total)</td>
+					<td>{{$pemesanan->tanggal}}</td>
+					<td>{{$pemesanan->estimasi}}</td>
                     <td>
 					<form action="{{ route('pemesanan.proses', $pemesanan->id) }}" method="POST">
 						@csrf

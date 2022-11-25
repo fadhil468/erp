@@ -61,19 +61,47 @@ class KasirController extends Controller
             $benang = bom::where('id',3)->first();
             $dakron = bom::where('id',3)->first();
         }
-            //bahan baku bom x jumlah pesanan
+            //bahan baku bom x jumlah pemesanan
             $get_kain = $kain->kain * $request->jumlah ;
             $get_benang = $benang->benang * $request->jumlah ;
             $get_dakron = $dakron->dakron * $request->jumlah ;
         //end mo (making order)
 
+        // Date Time
+            $tanggal = date('d-m-Y, H:i');
+
         $boms=bom::find($request->id);
 
         $time = Carbon::now();
+        $sunday = $time->isSunday();
         $estimasi = $boms->estimasi * $request->jumlah;
+        $total_estimasi = pemesanan::sum('jumlah_estimasi');
+
+        // cek jika jumlah melebihi 1 pemesanan
+        if(pemesanan::count()>=1){
+            $total_estimasi = pemesanan::sum('jumlah_estimasi') + $estimasi;
+        }
+        else{
+            $total_estimasi = $estimasi;
+        }
         
+        // cek apakah hari minggu
+        if($time == $sunday){
+            $tambah_estimasi = $time->addMinutes($total_estimasi)->addDays(1);
+        }
+        else{
+            $tambah_estimasi = $time->addMinutes($total_estimasi);
+        }
+
+        $hasil_estimasi = $tambah_estimasi;
+
+        if($request->nama_produk == 'Bantal'){
+            $kode_pesan = "PT-Bina-Karya-$request->size-$request->kode_produk";
+        }
+        //insert database
         Pemesanan::create([
             'id_produk'=> $request->id,
+            'kode_pesanan'=>$kode_pesan,
             'nama_pemesan'=> $request->nama_pemesan,
             'kontak_pemesan'=> $request->kontak_pemesan,
             'alamat_pemesan'=> $request->alamat_pemesan,
@@ -85,9 +113,11 @@ class KasirController extends Controller
             'kain'=>$get_kain,
             'benang'=>$get_benang,
             'dakron'=>$get_dakron,
-            'quantity'=>1,
+            'status'=>0,
             'total'=>$request->total,
-            'estimasi'=>$request->estimasi
+            'tanggal'=>$tanggal,
+            'estimasi'=>$hasil_estimasi->format('d-m-Y,H:i'),
+            'jumlah_estimasi' =>$total_estimasi
         ]);
         return redirect()->route('pemesanan.index');
     }

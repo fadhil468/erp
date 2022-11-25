@@ -7,6 +7,9 @@ use App\Models\Pemesanan;
 use Illuminate\Support\Facades\DB;
 use App\Models\barang;
 use App\Models\bom;
+use App\Models\bahanbaku;
+use App\Models\mad;
+use Alert;
 
 class PemesananController extends Controller
 {
@@ -60,9 +63,9 @@ class PemesananController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Pemesanan $pemesanan)
+    public function edit($id)
     {
-        $pemesanan = Pemesanan::find($pemesanan->id);
+        $pemesanan = Pemesanan::find($id);
         return view('Pemesanan-page.edit',compact('pemesanan'));
     }
 
@@ -73,16 +76,10 @@ class PemesananController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,pemesanan $pemesanan)
+    public function update(Request $request,$id)
     { 
-        $pemesanan->update ([
-            'nama_pembeli' => $request->nama_pembeli,
-            'kontak_pembeli' => $request->kontak_pembeli,
-            'alamat_pembeli' => $request->alamat_pembeli,
-            'kode_produk' => $request->kode_produk,
-            'jumlah_pesanan' => $request->jumlah_pesanan,
-            'total_harga' => $request->total_harga
-        ]);
+        $pemesanan = pemesanan::find($id);
+        $pemesanan->update($request->all());
         return redirect()->route('pemesanan.index');
 }
     /**
@@ -96,5 +93,81 @@ class PemesananController extends Controller
         $delete = Pemesanan::find($id);
         $delete->delete();
         return redirect()->route('pemesanan.index');
+    }
+
+    public function proses($id)
+    {
+        //inisialisasi variabel untuk menampung data bahan baku
+        $bahan_kain = bahanbaku::find(1);
+        $bahan_kain = $bahan_kain->stok;
+        $bahan_benang = bahanbaku::find(2);
+        $bahan_benang = $bahan_benang->stok;
+        $bahan_dakron = bahanbaku::find(3);
+        $bahan_dakron = $bahan_dakron->stok;
+
+        $mad = mad::all();
+        $pemesanans = pemesanan::find($id);
+        $barangs = barang::find($pemesanans->id_produk); //pengambilan data dari tabel pemesanan
+
+        $pesan_kain = $pemesanans->kain;
+        $pesan_benang = $pemesanans->benang;
+        $pesan_dakron = $pemesanans->dakron;
+
+        // cek ketersediaan bahan  CA (Check Avaibiltiy)
+        if($bahan_kain >= $pesan_kain && $bahan_benang >= $pesan_benang && $bahan_dakron >= $pesan_dakron){
+            
+            //jika bahan mencukupi maka pesanan diproses
+
+            $min_kain = $bahan_kain - $pesan_kain;
+            $min_benang = $bahan_benang - $pesan_benang;
+            $min_dakron = $bahan_dakron - $pesan_dakron;
+
+            // proses update stok bahan baku
+            $new_kain = bahanbaku::find(1);
+            $new_kain->stok = $min_kain;
+            $new_kain->save();
+            
+            $new_benang = bahanbaku::find(2);
+            $new_benang ->stok = $min_benang;
+            $new_benang->save();
+            
+            $new_dakron = bahanbaku::find(3);
+            $new_dakron ->stok = $min_dakron;
+            $new_dakron->save();
+
+            $mad = mad::create([
+                'kode_pesanan'=> $pemesanans->kode_pesanan,
+                'nama_pemesan' =>$pemesanans->nama_pemesan,
+                'kontak_pemesan' =>$pemesanans->kontak_pemesan,
+                'alamat_pemesan' =>$pemesanans->alamat_pemesan,
+                'nama_produk'=>$pemesanans->nama_produk,
+                'harga'=>$pemesanas->harga,
+                'jumlah'=>$pemesanas->jumlah,
+                'size'=>$pemesanas->size,
+                'quantity'=>$pemesanas->quantity,
+                'status'=>$pemesanas->status,
+                'total'=>$pemesanas->total,
+                'kain'=>$pemesanas->kain,
+                'benang'=>$pemesanas->benang,
+                'dakron'=>$pemesanas->dakron,
+                'tanggal'=>$pemesanas->tanggal,
+                'estimasi'=>$pemesanas->estimasi,
+            ]);
+
+            // proses update status
+            $mad->status = 1;
+            $mad->save();
+            $barangs->penjualan = $produk->penjualan + $pemesanans->jumlah;
+            $barangs->save();
+
+            $pemesanans->delete(); // menghapus pesanan yang telah diproses
+
+            Alert::success('Pesanan Berhasil Diproses');
+            return redirect()->route('mad.index');
+        }else{
+            Alert::error('Pesanan Tidak Dapat Diproses,Silahkan tambah Stok');
+            return redirect()->route('bahanbaku.index');
+        }
+        
     }
 }
