@@ -7,6 +7,7 @@ use App\Http\Controllers\BahanBakuController;
 use App\Http\Controllers\BomController;
 use App\Http\Controllers\KasirController;
 use App\Http\Controllers\VendorController;
+use App\Http\Controllers\MadController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,6 +37,7 @@ Route::resource('/bom',BomController::class);
 Route::post('/bom/ajax',[BomController::class,'bom'])->name('bom.ajax');
 Route::post('/bom/ajax1',[BomController::class,'bom1'])->name('bom.ajax1');
 Route::post('/bom/ajax2',[BomController::class,'bom2'])->name('bom.ajax2');
+
 // Kasir
 Route::resource('/kasir',KasirController::class);
 Route::post('/kasir/ajax',[KasirController::class,'ajax'])->name('kasir.ajax');
@@ -45,5 +47,13 @@ Route::post('/kasir/ajax3',[KasirController::class,'ajax3'])->name('kasir.ajax3'
 Route::post('/kasir/ajax4',[KasirController::class,'ajax4'])->name('kasir.ajax4');
 Route::post('/kasir/ajax5',[KasirController::class,'ajax5'])->name('kasir.ajax5');
 Route::post('/kasir/ajax6',[KasirController::class,'ajax6'])->name('kasir.ajax6');
+
+//pemesanan
+Route::resource('/pemesanan',PemesananController::class);
+Route::post('/pemesanan/{id}/proses',[PemesananController::class,'proses'])->name('pemesanan.proses');
+
 // Vendor
 Route::resource('/vendor',VendorController::class);
+
+//Mad
+Route::resource('/mad',MadController::class);

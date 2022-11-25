@@ -4,7 +4,7 @@
 	
 <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
 @include('Layout.sidebar')
-
+@include('sweetalert::alert')
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
 		<div class="row">
 			<ol class="breadcrumb">
