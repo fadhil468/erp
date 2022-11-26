@@ -27,8 +27,7 @@ class VendorController extends Controller
      */
     public function create()
     {
-        $bahan = bahanbaku::all();
-        return view('Vendor-page.create',compact('bahan'));
+        return view('Vendor-page.create');
     }
 
     /**
@@ -78,7 +77,7 @@ class VendorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(vendor $vendor)
     {
         $vendor = Vendor::find($vendor->id);
         return view('Vendor-page.edit',compact('vendor'));
