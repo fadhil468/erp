@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\bahanbaku;
+use App\Models\vendor;
 use Illuminate\Support\Facades\DB;
 
 class BahanBakuController extends Controller
@@ -120,5 +121,21 @@ class BahanBakuController extends Controller
         $delete = BahanBaku::find($id);
         $delete->delete();
         return redirect()->route('bahanbaku.index');
+    }
+
+    public function vendor($id)
+    {
+        if($id == 1){
+            $vendors = vendor::where('bahan_baku','Kain')->get();
+            return view('Vendor-Page.Vendor',compact('vendors'));
+        }
+        elseif($id == 2){
+            $vendors = vendor::where('bahan_baku','Benang')->get();
+            return view('Vendor-Page.Vendor',compact('vendors'));
+        }
+        elseif($id ==3){
+            $vendors = vendor::where('bahan_baku','Dakron')->get();
+            return view('Vendor-Page.Vendor',compact('vendors'));
+        }
     }
 }

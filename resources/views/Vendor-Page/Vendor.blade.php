@@ -59,7 +59,7 @@
 		</div>
         <table class="table table-bordered table-striped table-hover">
             <thead>
-				<a type="button" class="btn btn-primary btn-lg" href="{{ route ('vendor.create') }}">+</a>
+				<a type="button" class="btn btn-primary btn-lg" href="{{ route ('datavendor.create') }}">+</a>
               <tr>
                 <th rowspan="2">No</th>
                 <th rowspan="2">Kode Vendor</th>
@@ -78,7 +78,7 @@
             </thead>
 			<!-- Batas belum dikerjakan -->
             <tbody class="text-center">
-                @foreach ($vendor as $ven)
+                @foreach ($vendors as $ven)
                 <tr>
                     <td>{{$ven->id}}</td>
                     <td>{{$ven->kode_vendor}}</td>
@@ -94,8 +94,8 @@
 					</td>
 						<td>
 							<form onsubmit="return confirm('Apakah Anda Yakin ?');"
-								action="{{ route('vendor.destroy', $ven->id) }}" method="POST">
-								<a href="{{ route('vendor.edit', $ven->id) }}"
+								action="{{ route('datavendor.destroy', $ven->id) }}" method="POST">
+								<a href="{{ route('datavendor.edit', $ven->id) }}"
 									class="btn btn-sm btn-info"><i class="fa fa-pencil" aria-hidden="true"></i></a>
 								@csrf
 								@method('DELETE')
@@ -105,4 +105,6 @@
                 </tr>
                 @endforeach
             </tbody>
+		</table>
+		<script></script>
 @endsection
