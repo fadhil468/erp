@@ -28,6 +28,7 @@ Route::resource('/barang',BarangController::class);
 
 // Bahan Baku
 Route::resource('/bahanbaku',BahanBakuController::class);
+Route::get('datavendor/{id}/vendor',[BahanBakuController::class,'vendor'])->name('bahanbaku.vendor');
 
 // BOM
 Route::resource('/bom',BomController::class);
@@ -50,7 +51,7 @@ Route::resource('/pemesanan',PemesananController::class);
 Route::post('/pemesanan/{id}/proses',[PemesananController::class,'proses'])->name('pemesanan.proses');
 
 // Vendor
-Route::resource('/vendor',VendorController::class);
-
+Route::resource('datavendor',VendorController::class);
+Route::post('/datavendor/{id}/tambahstok',[VendorController::class,'tambahstok'])->name('datavendro.stok');
 //Mad
 Route::resource('/mad',MadController::class);

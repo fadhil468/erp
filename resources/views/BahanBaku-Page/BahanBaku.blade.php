@@ -86,23 +86,23 @@
                     <td>
 						@if ($bahanbaku->stok == 0)
 							<span class="badge bg-danger">Belum Tersedia</span>
-						@else
-							{{$bahanbaku->stok}}
+						@elseif ($bahanbaku->stok >0)
+							@if($bahanbaku == 'Kain')
+							<span class="badge bg-primary me-2" >{{$bahanbaku->stok}} <small>meter</small></span>	
+						@elseif ($bahanbaku == 'Benang')
+								<span class="badge bg-primary me-2" >{{$bahanbaku->stok}} <small>roll</small></span>
+						@elseif ($bahanbaku == 'Dakron')
+								<span class="badge bg-primary me-2" >{{$bahanbaku->stok}} <small>gram</small></span>
+							@endif
 						@endif
 					</td>
                     <td>
                         <img width="50" height="50"
                             src="{{ Storage::url('public/posts/') . $bahanbaku->foto}}" alt="">
-                    <td>
-                        <form onsubmit="return confirm('Apakah Anda Yakin ?');"
-                            action="{{ route('bahanbaku.destroy', $bahanbaku->id) }}" method="POST">
-                            <a href="{{ route('bahanbaku.edit', $bahanbaku->id) }}"
-                                class="btn btn-sm btn-info"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-sm btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></button>
-                        </form>
                     </td>
+					<td>
+						<a href="{{route('bahanbaku.vendor',$bahanbaku->id)}}" class="btn btn-sm btn-info">Order</a>
+					</td>
                 </tr>
                 @endforeach
             </tbody>
