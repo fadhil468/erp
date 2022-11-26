@@ -16,8 +16,8 @@ class VendorController extends Controller
      */
     public function index()
     {
-        $vendor = vendor::all();
-        return view('Vendor-Page.Vendor',compact('vendor'));
+        $vendors = vendor::all();
+        return view('Vendor-Page.Vendor',compact('vendors'));
     }
 
     /**
@@ -68,7 +68,8 @@ class VendorController extends Controller
      */
     public function show($id)
     {
-        //
+        $bahanbaku = vendor::find($id);
+        return view('Vendor-Page.Tambahstok',compact('bahanbaku'));
     }
 
     /**
@@ -125,4 +126,22 @@ class VendorController extends Controller
         $delete->delete();
         return redirect()->route('vendor.index');
     }
+    
+    public function tambahstok(Request $request,$id)
+    {
+        $bahan = vendor::find($id);
+        $bahan_baku = bahanbaku::where('bahan_baku',$bahan->nama_bahan_baku)->first();
+        $bahan_baku->stok = $bahan_baku->stok + $request->stok;
+        $bahan_baku->save();
+
+        if($bahan_baku){
+            Alert::success('Stok Berhasil Ditambahkan');
+            return redirect()->route('bahanbaku.index');
+        }
+        else{
+            Alert::success('Stok Berhasil Ditambahkan');
+            return redirect()->route('datavendor.show');
+        }
+    }
+    
 }

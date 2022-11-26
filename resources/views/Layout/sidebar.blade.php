@@ -46,7 +46,7 @@
 			<li><a class="{{ request()->is('bom*') ? 'active' : '' }}" href="{{route('bom.index')}}">
 				<span class="fa fa-arrow-right">&nbsp;</span> Data Bom
 			</a></li>
-			<li><a class="{{ request()->is('vendor*') ? 'active' : '' }}" href="{{route('vendor.index')}}">
+			<li><a class="{{ request()->is('vendor*') ? 'active' : '' }}" href="{{route('datavendor.index')}}">
 				<span class="fa fa-arrow-right">&nbsp;</span> Data Vendor
 			</a></li>
 			<li><a href="login.html"><em class="fa fa-power-off">&nbsp;</em> Logout</a></li>
