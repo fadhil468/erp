@@ -26,9 +26,6 @@ Route::get('/', function () {
 //Barang
 Route::resource('/barang',BarangController::class);
 
-//Pemesanan
-Route::resource('/pemesanan',PemesananController::class);
-
 // Bahan Baku
 Route::resource('/bahanbaku',BahanBakuController::class);
 
