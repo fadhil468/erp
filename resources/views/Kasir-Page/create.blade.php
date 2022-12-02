@@ -1,116 +1,148 @@
-		
 @extends('Layout.index')
 @section('content')
-	
+
 <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
-@include('Layout.sidebar')
-@include('sweetalert::alert')
-	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
-		<div class="row">
-			<ol class="breadcrumb">
-				<li><a href="#">
-					<em class="fa fa-home"></em>
-				</a></li>
-				<li class="active">Kasir</li>
-			</ol>
-		</div><!--/.row-->
-		
-		<div class="row">
-			<div class="col-lg-12">
-				<h1 class="page-header">Kasir</h1>
-			</div>
-		</div><!--/.row-->
+    @include('Layout.sidebar')
+    @include('sweetalert::alert')
+    <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+        <div class="row">
+            <ol class="breadcrumb">
+                <li><a href="#">
+                        <em class="fa fa-home"></em>
+                    </a></li>
+                <li class="active">Kasir</li>
+            </ol>
+        </div>
+        <!--/.row-->
+
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Kasir</h1>
+            </div>
+        </div>
+        <!--/.row-->
         <form action="{{route('kasir.store')}}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="card">
                 <h4 class="card-header">Produk</h4>
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-xs-6 col-md-12 col-lg-12">
-                            <div style="margin-left: 1rem">
+                        <div class="col-xs-12 col-md-12 col-lg-12">
+                            <div class="col-xs-12 col-md-6 col-lg-6" style="padding-left: 0; margin-bottom: 12px;">
                                 <td>
                                     <label>Detail Produk</label>
-                                    <select id="id" class="form-control dynamic " type="text" name="id" data-dependent="kode_produk" data-dynamic1="nama_produk" 
-                                    data-dynamic2="ukuran_panjang" data-dynamic3="ukuran_lebar" data-dynamic4="harga" data-dynamic5="berat" 
-                                    data-dynamic6="size" required >
-                                        <option disabled selected > Pilih </option>
+                                    <select id="id" class="form-control dynamic " type="text" name="id"
+                                        data-dependent="kode_produk" data-dynamic1="nama_produk"
+                                        data-dynamic2="ukuran_panjang" data-dynamic3="ukuran_lebar"
+                                        data-dynamic4="harga" data-dynamic5="berat" data-dynamic6="size" required>
+                                        <option disabled selected> Pilih </option>
                                         @foreach ($barangs as $barang)
-                                            <option value="{{$barang->id}}">
-                                                {{$barang->kode_produk}} || {{$barang->nama_produk}} || {{$barang->size}}
-                                            </option>
+                                        <option value="{{$barang->id}}">
+                                            {{$barang->kode_produk}} || {{$barang->nama_produk}} ||
+                                            {{$barang->size}}
+                                        </option>
                                         @endforeach
                                     </select>
                                 </td>
+                            </div>
+                            <div class="col-xs-12 col-md-6" style="padding-left: 0; margin-bottom: 12px;">
                                 <td>
                                     <label>Kode Produk</label>
-                                    <select class="form-control" type="text" name="kode_produk" id="kode_produk" placeholder="" readonly>
+                                    <select class="form-control" type="text" name="kode_produk" id="kode_produk"
+                                        placeholder="" readonly>
                                     </select>
-                                </td>
-                                <td>
-                                    <label>Nama Produk</label>
-                                    <select class="form-control" type="text" name="nama_produk" id="nama_produk" placeholder="" readonly>
-                                    </select>
-                                </td>
-                                <td>
-                                    <label>Ukuran Panjang</label>
-                                    <select class="form-control" type="text" name="ukuran_panjang" id="ukuran_panjang"placeholder="" readonly>
-                                    </select>
-                                </td>
-                                <td>
-                                    <label>Ukuran Lebar</label>
-                                    <select class="form-control" type="text" name="ukuran_lebar" id="ukuran_lebar" placeholder="" readonly>
-                                    </select>
-                                </td>
-                                <td>
-                                    <label>Harga</label>
-                                    <select class="form-control" type="text" name="harga" id="harga" placeholder="" readonly>
-                                    </select>
-                                </td>
-                                <td>
-                                    <label>Berat</label>
-                                    <select class="form-control" type="text" name="berat" id="berat" placeholder="" readonly>
-                                    </select>
-                                </td>
-                                <td>
-                                    <label>Size</label>
-                                    <select class="form-control" type="text" name="size" id="size" placeholder="" readonly>
-                                    </select>
-                                </td>
-                                <td>
-                                    <label>Jumlah Pesanan</label>
-                                    <input class="form-control" type="text" name="jumlah" id="jumlah" placeholder="" onchange="pesan()"required>
-                                </td>
-                                <td>
-                                    <label>Total Harga</label>
-                                    <input class="form-control" type="text" name="total" id="total" placeholder="" readonly >
-                                </td>
-                                <br><br>
-                                <td>
-                                    <label>Nama Pemesan</label>
-                                    <input class="form-control" type="text" name="nama_pemesan" placeholder="" required >
-                                </td>
-                                <td>
-                                    <label>Nomor Pemesan</label>
-                                    <input class="form-control" type="text" name="kontak_pemesan" placeholder="" required >
-                                </td>
-                                <td>
-                                    <label>Alamat Pemesan</label>
-                                    <input class="form-control" type="text" name="alamat_pemesan" placeholder="" required >
-                                </td>
-                                <td>
-                                    <button type="submit" class="btn btn-info" style="margin-left: 1.5rem">Simpan Data</button>
                                 </td>
                             </div>
+                            <div class="col-xs-12 col-md-6" style="padding-left: 0; margin-bottom: 12px;">
+                                <td>
+                                    <label>Nama Produk</label>
+                                    <select class="form-control" type="text" name="nama_produk" id="nama_produk"
+                                        placeholder="" readonly>
+                                    </select>
+                                </td>
+                            </div>
+                            <div class="col-xs-12 col-md-6" style="padding-left: 0; margin-bottom: 12px;">
+                                <td>
+                                    <label>Ukuran Panjang</label>
+                                    <select class="form-control" type="text" name="ukuran_panjang" id="ukuran_panjang"
+                                        placeholder="" readonly>
+                                    </select>
+                                </td>
+                            </div>
+                            <div class="col-xs-12 col-md-6" style="padding-left: 0; margin-bottom: 12px;">
+                                <td>
+                                    <label>Ukuran Lebar</label>
+                                    <select class="form-control" type="text" name="ukuran_lebar" id="ukuran_lebar"
+                                        placeholder="" readonly>
+                                    </select>
+                                </td>
+                            </div>
+                            <div class="col-xs-12 col-md-6" style="padding-left: 0; margin-bottom: 12px;">
+                                <td>
+                                    <label>Harga</label>
+                                    <select class="form-control" type="text" name="harga" id="harga" placeholder=""
+                                        readonly>
+                                    </select>
+                                </td>
+                            </div>
+                            <div class="col-xs-12 col-md-6" style="padding-left: 0; margin-bottom: 12px;">
+                                <td>
+                                    <label>Berat</label>
+                                    <select class="form-control" type="text" name="berat" id="berat" placeholder=""
+                                        readonly>
+                                    </select>
+                                </td>
+                            </div>
+                            <div class="col-xs-12 col-md-6" style="padding-left: 0; margin-bottom: 12px;">
+                                <td>
+                                    <label>Size</label>
+                                    <select class="form-control" type="text" name="size" id="size" placeholder=""
+                                        readonly>
+                                    </select>
+                                </td>
+                            </div>
+                            <div class="col-xs-12 col-md-6" style="padding-left: 0; margin-bottom: 12px;">
+                                <td>
+                                    <label>Jumlah Pesanan</label>
+                                    <input class="form-control" type="text" name="jumlah" id="jumlah" placeholder=""
+                                        onchange="pesan()" required>
+                                </td>
+                            </div>
+                            <div class="col-xs-12 col-md-6" style="padding-left: 0; margin-bottom: 12px;">
+                                <td>
+                                    <label>Total Harga</label>
+                                    <input class="form-control" type="text" name="total" id="total" placeholder=""
+                                        readonly>
+                                </td>
+                            </div>
+
+                            <br><br>
+                            <td>
+                                <label>Nama Pemesan</label>
+                                <input class="form-control" type="text" name="nama_pemesan" placeholder="" required>
+                            </td>
+                            <td>
+                                <label>Nomor Pemesan</label>
+                                <input class="form-control" type="text" name="kontak_pemesan" placeholder="" required>
+                            </td>
+                            <td>
+                                <label>Alamat Pemesan</label>
+                                <input class="form-control" type="text" name="alamat_pemesan" placeholder="" required>
+                            </td>
+                            <td>
+                                <button type="submit" class="btn btn-info" style="margin: 1.5rem 0">Simpan
+                                    Data</button>
+                            </td>
                         </div>
                     </div>
                 </div>
             </div>
         </form>
-            <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-            <script src="../assets/js/pemesanan.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script src="../assets/js/pemesanan.js"></script>
         {{-- Ajax for Kode Produk --}}
-            <script>
-                $(document).ready(function() {
+        <script>
+            $(document).ready(function() {
                     $('.dynamic').change(function() {
                         if ($(this).val() != '') {
                             var select = $(this).attr("id");
@@ -136,11 +168,11 @@
                         $('#kode_produk').val('');
                     });
                 });
-            </script>
+        </script>
 
         {{-- Ajax for Nama Produk --}}
-            <script>
-                $(document).ready(function() {
+        <script>
+            $(document).ready(function() {
                     $('.dynamic').change(function() {
                         if ($(this).val() != '') {
                             var select = $(this).attr("id");
@@ -166,11 +198,11 @@
                         $('#nama_produk').val('');
                     });
                 });
-            </script>
+        </script>
 
         {{-- Ajax for Ukuran Panjang --}}
-            <script>
-                $(document).ready(function() {
+        <script>
+            $(document).ready(function() {
                     $('.dynamic').change(function() {
                         if ($(this).val() != '') {
                             var select = $(this).attr("id");
@@ -196,10 +228,10 @@
                         $('#ukuran_panjang').val('');
                     });
                 });
-            </script>
+        </script>
         {{-- Ajax for Ukuran Lebar --}}
-            <script>
-                $(document).ready(function() {
+        <script>
+            $(document).ready(function() {
                     $('.dynamic').change(function() {
                         if ($(this).val() != '') {
                             var select = $(this).attr("id");
@@ -225,10 +257,10 @@
                         $('#ukuran_lebar').val('');
                     });
                 });
-            </script>
+        </script>
         {{-- Ajax for Ukuran Harga --}}
-            <script>
-                $(document).ready(function() {
+        <script>
+            $(document).ready(function() {
                     $('.dynamic').change(function() {
                         if ($(this).val() != '') {
                             var select = $(this).attr("id");
@@ -254,10 +286,10 @@
                         $('#harga').val('');
                     });
                 });
-            </script>
+        </script>
         {{-- Ajax for Ukuran Berat--}}
-            <script>
-                $(document).ready(function() {
+        <script>
+            $(document).ready(function() {
                     $('.dynamic').change(function() {
                         if ($(this).val() != '') {
                             var select = $(this).attr("id");
@@ -283,10 +315,10 @@
                         $('#berat').val('');
                     });
                 });
-            </script>
+        </script>
         {{-- Ajax for Ukuran size--}}
-            <script>
-                $(document).ready(function() {
+        <script>
+            $(document).ready(function() {
                     $('.dynamic').change(function() {
                         if ($(this).val() != '') {
                             var select = $(this).attr("id");
@@ -312,5 +344,5 @@
                         $('#size').val('');
                     });
                 });
-            </script>
-@endsection
+        </script>
+        @endsection
