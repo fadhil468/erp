@@ -8,6 +8,8 @@ use App\Http\Controllers\BomController;
 use App\Http\Controllers\KasirController;
 use App\Http\Controllers\VendorController;
 use App\Http\Controllers\MadController;
+use App\Http\Controllers\RfqController;
+use App\Http\Controllers\Konfirmasi_OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,5 +58,18 @@ Route::post('/pemesanan/{id}/proses',[PemesananController::class,'proses'])->nam
 // Vendor
 Route::resource('datavendor',VendorController::class);
 Route::post('/datavendor/{id}/tambahstok',[VendorController::class,'tambahstok'])->name('datavendro.stok');
+
 //Mad
 Route::resource('/mad',MadController::class);
+
+//RFQ
+Route::resource('/rfq',RfqController::class);
+Route::post('/rfq/ayax',[RfqController::class,'ayax'])->name('rfq.ayax');
+Route::post('/rfq/ayax1',[RfqController::class,'ayax1'])->name('rfq.ayax1');
+Route::post('/rfq/ayax2',[RfqController::class,'ayax2'])->name('rfq.ayax2');
+Route::post('/rfq/ayax3',[RfqController::class,'ayax3'])->name('rfq.ayax3');
+Route::post('/rfq/ayax4',[RfqController::class,'ayax4'])->name('rfq.ayax4');
+
+//Konfirmasi
+Route::resource('konfirmasi',Konfirmasi_OrderController::class);
+Route::get('/konfirmasi/{id}/konfirmasi/{kode_rfq}', [Konfirmasi_OrderController::class, 'confirm'])->name('konfirmasi.confirm'); //konfirmasi order

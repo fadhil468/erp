@@ -20,7 +20,7 @@
 				<h1 class="page-header">Dashboard</h1>
 			</div>
 		</div><!--/.row-->
-        <form action="{{route('vendor.store')}}" method="POST" enctype="multipart/form-data">
+        <form action="{{route('datavendor.store')}}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="card">
                 <h4 class="card-header">Tambah Data</h4>
@@ -40,8 +40,8 @@
                                     <label>Jenis Vendor</label>
                                     <select class="form-control" type="text" name="jenis_vendor" placeholder="" required>
                                         <option disable selected>-- Pilih Jenis --</option>
-                                        <option value="I">Individual</option>
-                                        <option value="C">Company</option>
+                                        <option value="Individual">Individual</option>
+                                        <option value="Company">Company</option>
                                     </select>
                                 </div>
                                 <div class="col-md-6">
@@ -55,7 +55,7 @@
                                 <div class="col-md-6">
                                     <label>Bahan Baku</label>
                                     <select id="id" class="form-control" type="text" name="bahan_baku" required >
-                                        <option disabled selected > Pilih </option>
+                                        <option disabled selected >-- Pilih Bahan --</option>
                                         @foreach ($bahan as $bahans)
                                             <option value="{{$bahans->nama_bahan_baku}}">
                                                 {{$bahans->nama_bahan_baku}}

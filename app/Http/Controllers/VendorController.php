@@ -57,7 +57,7 @@ class VendorController extends Controller
             'bahan_baku' => $request->bahan_baku,
             'rekening_vendor' => $request->rekening_vendor,
         ]);
-        return redirect()->route('vendor.index');
+        return redirect()->route('datavendor.index');
     }
 
     /**
@@ -80,8 +80,8 @@ class VendorController extends Controller
      */
     public function edit($id)
     {
-        $vendor = Vendor::find($vendor->id);
-        return view('Vendor-page.edit',compact('vendor'));
+        $vendors = Vendor::find($vendor->id);
+        return view('Vendor-page.edit',compact('vendors'));
     }
 
     /**
@@ -91,7 +91,7 @@ class VendorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, vendor $vendor)
+    public function update(Request $request, vendor $vendors)
     {
         //validate form
         $this->validate($request,[
@@ -101,7 +101,7 @@ class VendorController extends Controller
         //upload image
         $image = $request->file('foto');
         $image->storeAs('public/posts',$image->hashName());
-        $vendor->update([
+        $vendors->update([
             'foto'=> $image->hashName(),
             'kode_vendor' => $request->kode_vendor,
             'nama_vendor' => $request->nama_vendor,
@@ -124,7 +124,7 @@ class VendorController extends Controller
     {
         $delete = Vendor::find($id);
         $delete->delete();
-        return redirect()->route('vendor.index');
+        return redirect()->route('datavendor.index');
     }
     
     public function tambahstok(Request $request,$id)
