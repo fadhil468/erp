@@ -101,7 +101,7 @@
                             src="{{ Storage::url('public/posts/') . $bahanbaku->foto}}" alt="">
                     </td>
 					<td>
-						<a href="{{route('bahanbaku.vendor',$bahanbaku->id)}}" class="btn btn-sm btn-info">Order</a>
+						<a href="{{route('rfq.create',$bahanbaku->id)}}" class="btn btn-sm btn-info">Order</a>
 					</td>
                 </tr>
                 @endforeach

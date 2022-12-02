@@ -13,19 +13,20 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('vendors', function (Blueprint $table) {
+        Schema::create('rfqs', function (Blueprint $table) {
             $table->id();
-            $table->string('kode_vendor')->unique();
+            $table->string('kode_rfq');
             $table->string('nama_vendor');
-            $table->string('jenis_vendor');
             $table->string('email_vendor');
             $table->string('telpon_vendor');
             $table->string('bahan_baku');
             $table->integer('harga');
-            $table->string('rekening_vendor');
-            $table->integer('request_order');
-            $table->string('foto')->nullable();
-            $table->rememberToken();
+            $table->integer('quantity');
+            $table->integer('total');
+            $table->string('tanggal_pesan');
+            $table->integer('status');
+            $table->string('tanggal_confirm_vendor');
+            $table->integer('tanggal_pembayaran');
             $table->timestamps();
         });
     }
@@ -37,6 +38,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('vendors');
+        Schema::dropIfExists('rfqs');
     }
 };

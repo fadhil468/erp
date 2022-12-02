@@ -23,9 +23,9 @@
 					<li><a class="{{ request()->is('kasir*') ? 'active' : '' }}" href="{{route('kasir.index')}}">
 						<span class="fa fa-arrow-right">&nbsp;</span> Data Kasir
 					</a></li>
-					<li><a class="{{ request()->is('pemesanan*') ? 'active' : '' }}" href="{{route('pemesanan.index')}}">
+					{{-- <li><a class="{{ request()->is('pemesanan*') ? 'active' : '' }}" href="{{route('pemesanan.index')}}">
 						<span class="fa fa-arrow-right">&nbsp;</span> Data MO
-					</a></li>
+					</a></li> --}}
 					<li><a class="{{ request()->is('mad*') ? 'active' : '' }}" href="{{route('mad.index')}}">
 						<span class="fa fa-arrow-right">&nbsp;</span> Data Mad
 					</a></li>
@@ -48,6 +48,9 @@
 			</a></li>
 			<li><a class="{{ request()->is('vendor*') ? 'active' : '' }}" href="{{route('datavendor.index')}}">
 				<span class="fa fa-arrow-right">&nbsp;</span> Data Vendor
+			</a></li>
+			<li><a class="{{ request()->is('rfq*') ? 'active' : '' }}" href="{{route('rfq.index')}}">
+				<span class="fa fa-arrow-right">&nbsp;</span> Data RFQ
 			</a></li>
 			<li><a href="login.html"><em class="fa fa-power-off">&nbsp;</em> Logout</a></li>
 		</ul>

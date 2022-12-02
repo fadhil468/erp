@@ -11,13 +11,13 @@
 				<li><a href="#">
 					<em class="fa fa-home"></em>
 				</a></li>
-				<li class="active">Data BOM</li>
+				<li class="active">Data Vendor</li>
 			</ol>
 		</div><!--/.row-->
 		
 		<div class="row">
 			<div class="col-lg-12">
-				<h1 class="page-header">Data BOM</h1>
+				<h1 class="page-header">Data Vendor</h1>
 			</div>
 		</div><!--/.row-->
 		
@@ -59,48 +59,48 @@
 		</div>
         <table class="table table-bordered table-striped table-hover">
             <thead>
-				<a type="button" class="btn btn-primary btn-lg" href="{{ route ('bom.create') }} ">+</a>
+				<a type="button" class="btn btn-primary btn-lg" href="{{ route ('datavendor.create') }}">+</a>
               <tr>
                 <th rowspan="2">No</th>
-                <th rowspan="2">Kode Produk</th>
-                <th rowspan="2">Nama Produk</th>
-                <th rowspan="2">Size</th>
-                <th colspan="3">Bahan Baku</th>
+                <th rowspan="2">Kode RFQ</th>
+                <th colspan="3">Data Vendor</th>
+                <th colspan="2">Data Bahan</th>
                 <th rowspan="2">Quantity</th>
-                <th rowspan="2">Estimasi</th>
+                <th rowspan="2">Total Harga</th>
+				<th rowspan="2">Tanggal Pemesanan</th>
                 <th rowspan="2">Action</th>
               </tr>
               <tr>
-                <th>Kain/<small>meter</small></th>
-                <th>Benang/<small>meter</small></th>
-                <th>Dakron/<small>gram</small></th>
+                <th>Nama Vendor</th>
+                <th>Kontak</th>
+                <th>Email Vendor</th>
+				<th>Bahan</th>
+                <th>Harga</th>
               </tr>
             </thead>
+			<!-- Batas belum dikerjakan -->
             <tbody class="text-center">
-                @foreach ($bom as $bm)
+                @foreach ($konfirmasis as $ko)
                 <tr>
-                    <td>{{$bm->id}}</td>
-                    <td>{{$bm->kode}}</td>
-                    <td>{{$bm->nama}}</td>
-                    <td>{{$bm->size}}</td>
-                    <td>{{$bm->kain}} <small>m</small></td>
-                    <td>{{$bm->benang}} <small>roll</small></td>
-                    <td>{{$bm->dakron}} <small>g</small></td>
-                    <td>{{$bm->quantity}}</td>
-                    <td>{{$bm->estimasi}} <small>menit</small></td>
+                    <td>{{$ko->id}}</td>
+                    <td>{!! DNS1D::getBarcodeHTML($ko->kode_rfq, 'C39', 0.8, 30) !!}
+                        <p style="font-size: 10px; margin-top: 5px;">
+                            {{ $ko->kode_rfq }}</p></td>
+                    <td>{{$ko->nama_vendor}}</td>
+                    <td>{{$ko->telpon_vendor}}</td>
+                    <td>{{$ko->email_vendor}}</td>
+                    <td>{{$ko->bahan_baku}}</td>
+                    <td>{{$ko->harga}}</td>
+                    <td>{{$ko->quantity}}</td>
+                    <td>{{$ko->total}}</td>
+                    <td>{{$ko->tanggal_pesan}}</td>
                     <td>
-                        <form onsubmit="return confirm('Apakah Anda Yakin ?');"
-                            action="{{ route('bom.destroy', $bm->id) }}" method="POST">
-                            <a href="{{ route('bom.edit', $bm->id) }}"
-                                class="btn btn-sm btn-info"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-sm btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></button>
-                        </form>
-                        {{-- <a href="{{ route('bom.cetak', $bm->id) }}"
-                            class="btn btn-sm btn-info"><i class="fa fa-pencil" aria-hidden="true"></i></a> --}}
+                        <a href="{{route('konfirmasi.confirm',['id'=> $ko->id,'kode_rfq'=>$ko->kode_rfq])}}" class="btn btn-success me-2"><i class="fa fa-check-circle" aria-hidden="true"></i>
+                            Konfirmasi Order</a>
                     </td>
                 </tr>
                 @endforeach
             </tbody>
+		</table>
+		<script></script>
 @endsection

@@ -67,7 +67,9 @@
                 <th rowspan="2">Jenis Vendor</th>
                 <th colspan="2">Kontak</th>
                 <th rowspan="2">Bahan Baku</th>
+                <th rowspan="2">Harga</th>
                 <th rowspan="2">Rekening</th>
+                <th rowspan="2">Request Order</th>
 				<th rowspan="2">Gambar</th>
                 <th rowspan="2">Action</th>
               </tr>
@@ -87,7 +89,22 @@
                     <td>{{$ven->email_vendor}}</td>
                     <td>{{$ven->telpon_vendor}}</td>
                     <td>{{$ven->bahan_baku}}</td>
+                    <td>Rp.@idr($ven->harga)</td>
                     <td>{{$ven->rekening_vendor}}</td>
+                    <td>
+					@if ($ven->request_order == 0)
+						<span class="badge bg-danger"> Belum ada order</span>
+					@else
+						{{$ven->request_order}}
+					@endif	
+					</td>
+					<td>
+						@if ($ven->request_order == 0)
+							<a href="{{route('konfirmasi.show',$ven->id)}}" class="btn btn-sm btn-info" disabled>Check Order</a>
+						@elseif ($ven->request_order > 0)
+						<a href="{{route('konfirmasi.show',$ven->id)}}" class="btn btn-sm btn-info">Check Order</a>
+						@endif
+					</td>
                     <td>
 						<img width="50" height="50"
 						src="{{ Storage::url('public/posts/') . $ven->foto }}">
