@@ -55,7 +55,8 @@ class BarangController extends Controller
             'berat' => $request->berat,
             'size' => $request->size,
             'deskripsi_produk' => $request->deskripsi_produk,
-            'penjualan' => 0
+            'penjualan' => 0,
+            'stok' => 0
         ]);
         return redirect()->route('barang.index');
     }
@@ -106,7 +107,8 @@ class BarangController extends Controller
                     'berat' => $request->berat,
                     'size' => $request->size,
                     'deskripsi_produk' => $request->deskripsi_produk,
-                    'penjualan' => $request->penjualan
+                    'penjualan' => $request->penjualan,
+                    'stok' => $request->stok
                 ]);
                 return redirect()->route('barang.index');
     }

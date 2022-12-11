@@ -21,7 +21,7 @@
             </div>
         </div>
         <!--/.row-->
-        <form action="{{route('kasir.store')}}" method="POST" enctype="multipart/form-data">
+        <form action="#" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="card">
                 <h4 class="card-header">Produk</h4>
@@ -32,9 +32,7 @@
                                 <td>
                                     <label>Detail Produk</label>
                                     <select id="id" class="form-control dynamic " type="text" name="id"
-                                        data-dependent="kode_produk" data-dynamic1="nama_produk"
-                                        data-dynamic2="ukuran_panjang" data-dynamic3="ukuran_lebar"
-                                        data-dynamic4="harga" data-dynamic5="berat" data-dynamic6="size" required>
+                                        data-dependent="nama_produk" data-dynamic1="harga" data-dynamic2="size" required>
                                         <option disabled selected> Pilih </option>
                                         @foreach ($barangs as $barang)
                                         <option value="{{$barang->id}}">
@@ -42,14 +40,6 @@
                                             {{$barang->size}}
                                         </option>
                                         @endforeach
-                                    </select>
-                                </td>
-                            </div>
-                            <div class="col-xs-12 col-md-6" style="padding-left: 0; margin-bottom: 12px;">
-                                <td>
-                                    <label>Kode Produk</label>
-                                    <select class="form-control" type="text" name="kode_produk" id="kode_produk"
-                                        placeholder="" readonly>
                                     </select>
                                 </td>
                             </div>
@@ -63,32 +53,8 @@
                             </div>
                             <div class="col-xs-12 col-md-6" style="padding-left: 0; margin-bottom: 12px;">
                                 <td>
-                                    <label>Ukuran Panjang</label>
-                                    <select class="form-control" type="text" name="ukuran_panjang" id="ukuran_panjang"
-                                        placeholder="" readonly>
-                                    </select>
-                                </td>
-                            </div>
-                            <div class="col-xs-12 col-md-6" style="padding-left: 0; margin-bottom: 12px;">
-                                <td>
-                                    <label>Ukuran Lebar</label>
-                                    <select class="form-control" type="text" name="ukuran_lebar" id="ukuran_lebar"
-                                        placeholder="" readonly>
-                                    </select>
-                                </td>
-                            </div>
-                            <div class="col-xs-12 col-md-6" style="padding-left: 0; margin-bottom: 12px;">
-                                <td>
                                     <label>Harga</label>
                                     <select class="form-control" type="text" name="harga" id="harga" placeholder=""
-                                        readonly>
-                                    </select>
-                                </td>
-                            </div>
-                            <div class="col-xs-12 col-md-6" style="padding-left: 0; margin-bottom: 12px;">
-                                <td>
-                                    <label>Berat</label>
-                                    <select class="form-control" type="text" name="berat" id="berat" placeholder=""
                                         readonly>
                                     </select>
                                 </td>
@@ -115,24 +81,58 @@
                                         readonly>
                                 </td>
                             </div>
-
-                            <br><br>
-                            <td>
-                                <label>Nama Pemesan</label>
-                                <input class="form-control" type="text" name="nama_pemesan" placeholder="" required>
-                            </td>
-                            <td>
-                                <label>Nomor Pemesan</label>
-                                <input class="form-control" type="text" name="kontak_pemesan" placeholder="" required>
-                            </td>
-                            <td>
-                                <label>Alamat Pemesan</label>
-                                <input class="form-control" type="text" name="alamat_pemesan" placeholder="" required>
-                            </td>
-                            <td>
-                                <button type="submit" class="btn btn-info" style="margin: 1.5rem 0">Simpan
-                                    Data</button>
-                            </td>
+                            <div class="col-xs-12 col-md-6 col-lg-6" style="padding-left: 0; margin-bottom: 12px;">
+                                <td>
+                                    <label>Data Customer</label>
+                                    <select id="id" class="form-control dynamic " type="text" name="id"
+                                        data-dependent1="nama_customer" data-dynamic3="alamat_customer" data-dynamic4="email_customer" data-dynamic5="nomor_customer" required>
+                                        <option disabled selected> Pilih </option>
+                                        @foreach ($customers as $customer)
+                                        <option value="{{$customer->id}}">
+                                            {{$customer->nama_customer}} || {{$customer->alamat_customer}}
+                                        </option>
+                                        @endforeach
+                                    </select>
+                                </td>
+                            </div>
+                            <div class="col-xs-12 col-md-6" style="padding-left: 0; margin-bottom: 12px;">
+                                <td>
+                                    <label>Nama Customer</label>
+                                    <select class="form-control" type="text" name="nama_customer" placeholder="" id="nama_customer"
+                                    placeholder="" readonly>
+                                    </select>
+                                </td>
+                            </div>
+                            <div class="col-xs-12 col-md-6" style="padding-left: 0; margin-bottom: 12px;">
+                                <td>
+                                    <label>Alamat Customer</label>
+                                    <select class="form-control" type="text" name="alamat_customer" placeholder="" id="alamat_customer"
+                                    placeholder="" readonly>
+                                    </select>
+                                </td>
+                            </div>
+                            <div class="col-xs-12 col-md-6" style="padding-left: 0; margin-bottom: 12px;">
+                                <td>
+                                    <label>Email Customer</label>
+                                    <select class="form-control" type="text" name="email_customer" placeholder="" id="email_customer"
+                                    placeholder="" readonly>
+                                    </select>
+                                </td>
+                            </div>
+                            <div class="col-xs-12 col-md-6" style="padding-left: 0; margin-bottom: 12px;">
+                                <td>
+                                    <label>Nomor Customer</label>
+                                    <select class="form-control" type="text"  name="nomor_customer" placeholder="" id="nomor_customer"
+                                    placeholder="" readonly>
+                                    </select>
+                                </td>
+                            </div>
+                            <div class="col-xs-12 col-md-6" style="padding-left: 0; margin-bottom: 12px;"> 
+                                <td>
+                                    <button type="submit" class="btn btn-info" style="margin: 1.5rem 0">Simpan
+                                        Data</button>
+                                </td>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -140,7 +140,8 @@
         </form>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script src="../assets/js/pemesanan.js"></script>
-        {{-- Ajax for Kode Produk --}}
+
+        {{-- Ajax for Nama Produk --}}
         <script>
             $(document).ready(function() {
                     $('.dynamic').change(function() {
@@ -150,7 +151,7 @@
                             var dependent = $(this).data('dependent');
                             var _token = $('input[name="_token"]').val();
                             $.ajax({
-                                url: "{{ route('kasir.ajax') }}",
+                                url: "{{ route('sale.ajax') }}",
                                 method: "POST",
                                 data: {
                                     select: select,
@@ -165,12 +166,12 @@
                         }
                     });
                     $('#id').change(function() {
-                        $('#kode_produk').val('');
+                        $('#nama_produk').val('');
                     });
                 });
         </script>
 
-        {{-- Ajax for Nama Produk --}}
+        {{-- Ajax for Harga Produk --}}
         <script>
             $(document).ready(function() {
                     $('.dynamic').change(function() {
@@ -180,7 +181,7 @@
                             var dynamic1 = $(this).data('dynamic1');
                             var _token = $('input[name="_token"]').val();
                             $.ajax({
-                                url: "{{ route('kasir.ajax1') }}",
+                                url: "{{ route('sale.ajax1') }}",
                                 method: "POST",
                                 data: {
                                     select: select,
@@ -195,12 +196,12 @@
                         }
                     });
                     $('#id').change(function() {
-                        $('#nama_produk').val('');
+                        $('#harga').val('');
                     });
                 });
         </script>
 
-        {{-- Ajax for Ukuran Panjang --}}
+        {{-- Ajax for Size --}}
         <script>
             $(document).ready(function() {
                     $('.dynamic').change(function() {
@@ -210,7 +211,7 @@
                             var dynamic2 = $(this).data('dynamic2');
                             var _token = $('input[name="_token"]').val();
                             $.ajax({
-                                url: "{{ route('kasir.ajax2') }}",
+                                url: "{{ route('sale.ajax2') }}",
                                 method: "POST",
                                 data: {
                                     select: select,
@@ -225,11 +226,40 @@
                         }
                     });
                     $('#id').change(function() {
-                        $('#ukuran_panjang').val('');
+                        $('#size').val('');
                     });
                 });
         </script>
-        {{-- Ajax for Ukuran Lebar --}}
+        {{-- Ajax for nama produk --}}
+        <script>
+            $(document).ready(function() {
+                    $('.dynamic').change(function() {
+                        if ($(this).val() != '') {
+                            var select = $(this).attr("id");
+                            var value = $(this).val();
+                            var dependent1 = $(this).data('dependent1');
+                            var _token = $('input[name="_token"]').val();
+                            $.ajax({
+                                url: "{{ route('sale.ajax3') }}",
+                                method: "POST",
+                                data: {
+                                    select: select,
+                                    value: value,
+                                    _token: _token,
+                                   dependent1:dependent1
+                                },
+                                success: function(result) {
+                                    $('#' + dependent1).html(result);
+                                }
+                            })
+                        }
+                    });
+                    $('#id').change(function() {
+                        $('#nama_customer').val('');
+                    });
+                });
+        </script>
+
         <script>
             $(document).ready(function() {
                     $('.dynamic').change(function() {
@@ -239,13 +269,13 @@
                             var dynamic3 = $(this).data('dynamic3');
                             var _token = $('input[name="_token"]').val();
                             $.ajax({
-                                url: "{{ route('kasir.ajax3') }}",
+                                url: "{{ route('sale.ajax4') }}",
                                 method: "POST",
                                 data: {
                                     select: select,
                                     value: value,
                                     _token: _token,
-                                    dynamic3: dynamic3
+                                   dynamic3:dynamic3
                                 },
                                 success: function(result) {
                                     $('#' + dynamic3).html(result);
@@ -254,11 +284,11 @@
                         }
                     });
                     $('#id').change(function() {
-                        $('#ukuran_lebar').val('');
+                        $('#alamat_customer').val('');
                     });
                 });
         </script>
-        {{-- Ajax for Ukuran Harga --}}
+        
         <script>
             $(document).ready(function() {
                     $('.dynamic').change(function() {
@@ -268,13 +298,13 @@
                             var dynamic4 = $(this).data('dynamic4');
                             var _token = $('input[name="_token"]').val();
                             $.ajax({
-                                url: "{{ route('kasir.ajax4') }}",
+                                url: "{{ route('sale.ajax5') }}",
                                 method: "POST",
                                 data: {
                                     select: select,
                                     value: value,
                                     _token: _token,
-                                    dynamic4: dynamic4
+                                   dynamic4:dynamic4
                                 },
                                 success: function(result) {
                                     $('#' + dynamic4).html(result);
@@ -283,11 +313,11 @@
                         }
                     });
                     $('#id').change(function() {
-                        $('#harga').val('');
+                        $('#email_customer').val('');
                     });
                 });
         </script>
-        {{-- Ajax for Ukuran Berat--}}
+
         <script>
             $(document).ready(function() {
                     $('.dynamic').change(function() {
@@ -297,13 +327,13 @@
                             var dynamic5 = $(this).data('dynamic5');
                             var _token = $('input[name="_token"]').val();
                             $.ajax({
-                                url: "{{ route('kasir.ajax5') }}",
+                                url: "{{ route('sale.ajax6') }}",
                                 method: "POST",
                                 data: {
                                     select: select,
                                     value: value,
                                     _token: _token,
-                                    dynamic5: dynamic5
+                                   dynamic5:dynamic5
                                 },
                                 success: function(result) {
                                     $('#' + dynamic5).html(result);
@@ -312,37 +342,7 @@
                         }
                     });
                     $('#id').change(function() {
-                        $('#berat').val('');
+                        $('#nomor_customer').val('');
                     });
                 });
         </script>
-        {{-- Ajax for Ukuran size--}}
-        <script>
-            $(document).ready(function() {
-                    $('.dynamic').change(function() {
-                        if ($(this).val() != '') {
-                            var select = $(this).attr("id");
-                            var value = $(this).val();
-                            var dynamic6 = $(this).data('dynamic6');
-                            var _token = $('input[name="_token"]').val();
-                            $.ajax({
-                                url: "{{ route('kasir.ajax6') }}",
-                                method: "POST",
-                                data: {
-                                    select: select,
-                                    value: value,
-                                    _token: _token,
-                                    dynamic6: dynamic6
-                                },
-                                success: function(result) {
-                                    $('#' + dynamic6).html(result);
-                                }
-                            })
-                        }
-                    });
-                    $('#id').change(function() {
-                        $('#size').val('');
-                    });
-                });
-        </script>
-        @endsection

@@ -10,6 +10,11 @@ use App\Http\Controllers\VendorController;
 use App\Http\Controllers\MadController;
 use App\Http\Controllers\RfqController;
 use App\Http\Controllers\Konfirmasi_OrderController;
+use App\Http\Controllers\OrderPembelianController;
+use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\SaleController;
+use App\Http\Controllers\QuatationController;
+use App\Http\Controllers\InvoiceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -70,3 +75,29 @@ Route::post('/rfq/ayax4',[RfqController::class,'ayax4'])->name('rfq.ayax4');
 //Konfirmasi
 Route::resource('konfirmasi',Konfirmasi_OrderController::class);
 Route::get('/konfirmasi/{id}/konfirmasi/{kode_rfq}', [Konfirmasi_OrderController::class, 'confirm'])->name('konfirmasi.confirm'); //konfirmasi order
+
+//PO
+Route::resource('po',OrderPembelianController::class);
+Route::get('po/{id}/receive',[OrderPembelianController::class,'receive'])->name('po.receive');
+Route::get('po/{id}/paid',[OrderPembelianController::class,'paid'])->name('po.paid');
+
+//Customer
+Route::resource('customer',CustomerController::class);
+
+// Kasir-Penjualan / Sale
+Route::resource('/sale',SaleController::class);
+Route::post('/sale/ajax',[SaleController::class,'ajax'])->name('sale.ajax');
+Route::post('/sale/ajax1',[SaleController::class,'ajax1'])->name('sale.ajax1');
+Route::post('/sale/ajax2',[SaleController::class,'ajax2'])->name('sale.ajax2');
+Route::post('/sale/ajax3',[SaleController::class,'ajax3'])->name('sale.ajax3');
+Route::post('/sale/ajax4',[SaleController::class,'ajax4'])->name('sale.ajax4');
+Route::post('/sale/ajax5',[SaleController::class,'ajax5'])->name('sale.ajax5');
+Route::post('/sale/ajax6',[SaleController::class,'ajax6'])->name('sale.ajax6');
+
+//Quatation
+Route::resource('quatation',QuatationController::class);
+
+//Invoice
+Route::resource('invoice',InvoiceController::class);
+Route::get('invoice/{id}/paid',[InvoiceController::class,'paid'])->name('invoice.paid');
+Route::get('invoice/{id}/proses',[InvoiceController::class,'proses'])->name('invoice.proses');

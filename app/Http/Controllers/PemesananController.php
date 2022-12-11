@@ -141,23 +141,23 @@ class PemesananController extends Controller
                 'kontak_pemesan' =>$pemesanans->kontak_pemesan,
                 'alamat_pemesan' =>$pemesanans->alamat_pemesan,
                 'nama_produk'=>$pemesanans->nama_produk,
-                'harga'=>$pemesanas->harga,
-                'jumlah'=>$pemesanas->jumlah,
-                'size'=>$pemesanas->size,
-                'quantity'=>$pemesanas->quantity,
-                'status'=>$pemesanas->status,
-                'total'=>$pemesanas->total,
-                'kain'=>$pemesanas->kain,
-                'benang'=>$pemesanas->benang,
-                'dakron'=>$pemesanas->dakron,
-                'tanggal'=>$pemesanas->tanggal,
-                'estimasi'=>$pemesanas->estimasi,
+                'harga'=>$pemesanans->harga,
+                'jumlah'=>$pemesanans->jumlah,
+                'size'=>$pemesanans->size,
+                'quantity'=>$pemesanans->quantity,
+                'status'=>$pemesanans->status,
+                'total'=>$pemesanans->total,
+                'kain'=>$pemesanans->kain,
+                'benang'=>$pemesanans->benang,
+                'dakron'=>$pemesanans->dakron,
+                'tanggal'=>$pemesanans->tanggal,
+                'estimasi'=>$pemesanans->estimasi,
             ]);
 
             // proses update status
             $mad->status = 1;
             $mad->save();
-            $barangs->penjualan = $produk->penjualan + $pemesanans->jumlah;
+            $barangs->stok = $barangs->stok + $pemesanans->jumlah;
             $barangs->save();
 
             $pemesanans->delete(); // menghapus pesanan yang telah diproses

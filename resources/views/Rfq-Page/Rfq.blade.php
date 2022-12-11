@@ -21,7 +21,7 @@
 			</div>
 		</div><!--/.row-->
 		
-		<div class="panel panel-container">
+		{{-- <div class="panel panel-container">
 			<div class="row">
 				<div class="col-xs-6 col-md-3 col-lg-3 no-padding">
 					<div class="panel panel-teal panel-widget border-right">
@@ -56,10 +56,10 @@
 					</div>
 				</div>
 			</div><!--/.row-->
-		</div>
+		</div> --}}
         <table class="table table-bordered table-striped table-hover">
             <thead>
-				<a type="button" class="btn btn-primary btn-lg" href="{{ route ('rfq.create') }}">+</a>
+				{{-- <a type="button" class="btn btn-primary btn-lg" href="{{ route ('rfq.create') }}">+</a> --}}
               <tr>
                 <th rowspan="2">No</th>
                 <th rowspan="2">Kode Rfq</th>
@@ -69,7 +69,6 @@
                 <th rowspan="2">Total Harga</th>
                 <th rowspan="2">Tanggal Pemesanan</th>
 				<th colspan="3">Status</th>
-                <th rowspan="2">Action</th>
               </tr>
               <tr>
                 <th>Nama Vendor</th>
@@ -116,7 +115,7 @@
                         </td>
                     @elseif ($r->bahan_baku == 'Dakron')
                         <td>
-                            {{$rfq->quantity}} <small>gram</small>
+                            {{$r->quantity}} <small>gram</small>
                         </td>
 					@endif
 
@@ -131,7 +130,7 @@
                         </td>
                     <td>
                         @if ($r->tanggal_pembayaran == 0)
-                        <span class="badge bg-gray-900">Belum ada tagihan</span>
+                        <span class="badge bg-gray-900">Menunggu pembayaran</span>
                         @else
                             {{$r->tanggal_pembayaran}}
                         @endif
