@@ -16,7 +16,7 @@ class BahanBakuController extends Controller
      */
     public function index()
     {
-        $bahanbakus = BahanBaku::all();
+        $bahanbakus = BahanBaku::latest()->paginate(10);
         return view('BahanBaku-Page.BahanBaku',compact('bahanbakus'));
     }
 
@@ -55,7 +55,7 @@ class BahanBakuController extends Controller
             'harga' => $request->harga,
             'vendor' => $request->vendor,
             'deskripsi_bahan_baku' => $request->deskripsi_bahan_baku,
-            'stok' => $request->stok
+            'stok' => 0
         ]);
         return redirect()->route('bahanbaku.index');
     }

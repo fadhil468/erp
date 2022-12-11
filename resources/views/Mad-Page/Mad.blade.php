@@ -70,20 +70,18 @@
 					<th rowspan="2">No</th>
 					<th rowspan="2">Kode Pesanan</th>
 					<th colspan="3">Data Pemesan</th>
-					<th colspan="4">Data Produk</th>
+					<th colspan="3">Data Produk</th>
 					<th rowspan="2">Jumlah Pesanan</th>
 					<th colspan="3">Data Bahan Baku</th>
 					<th rowspan="2">Total Harga</th>
 					<th rowspan="2">Status</th>
 					<th rowspan="2">Tanggal Pesan</th>
 					<th rowspan="2">Hasil Jadi</th>
-					<th rowspan="2">Action</th>
 				</tr>
 				<tr>
 					<th>Nama Pemesan</th>
 					<th>Kontak Pemesan</th>
 					<th>Alamat Pemesan</th>
-					<th>Kode Produk</th>
 					<th>Nama Produk</th>
 					<th>Size</th>
 					<th>Harga</th>
@@ -103,25 +101,21 @@
 					<td>{{$mad->nama_pemesan}}</td>
 					<td>{{$mad->kontak_pemesan}}</td>
 					<td>{{$mad->alamat_pemesan}}</td>
-					<td>{{$mad->kode_produk}}</td>
 					<td>{{$mad->nama_produk}}</td>
 					<td>{{$mad->size}}</td>
-					<td>{{$mad->harga}}</td>
-					<td>{{$mad->jumlah}}</td>
+					<td>Rp.@idr($mad->harga)</td>
+					<td>{{$mad->jumlah}} <small>Pcs</small></td>
 					<td>{{$mad->kain}} <small>m</small></td>
 					<td>{{$mad->benang}} <small>m</small></td>
 					<td>{{$mad->dakron}} <small>g</small></td>
 					<td>Rp. @idr($mad->total)</td>
-					<td>{{$pemesanan->tanggal}}</td>
-					<td>{{$pemesanan->estimasi}}</td>
 					<td>
-						<form action="{{ route('pemesanan.proses', $pemesanan->id) }}" method="POST">
-							@csrf
-							<button type="submit" class="btn btn-sm btn-danger">Proses</button>
-						</form>
-						<a href="{{ route('pemesanan.edit', $pemesanan->id) }}" class="btn btn-sm btn-info"><i
-								class="fa fa-pencil" aria-hidden="true"></i></a>
+						@if ($mad->status == 1)
+						<span class="badge bg-success">Sedang Diproses</span>
+						@endif
 					</td>
+					<td>{{$mad->tanggal}}</td>
+					<td>{{$mad->estimasi}}</td>
 				</tr>
 				@endforeach
 			</tbody>

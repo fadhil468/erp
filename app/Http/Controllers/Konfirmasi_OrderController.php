@@ -89,10 +89,10 @@ class Konfirmasi_OrderController extends Controller
         //
     }
 
-    public function confirm($id,$kode_rfq)
+    public function confirm($id, $kode_rfq)
     {
-        $now = Carbon::now();
-
+        $now = carbon::now();
+        
         $konfirmasi_order = konfirmasi_order::where('kode_rfq',$kode_rfq)->first();
         $purchase_order = order_pembelian::create([
             'receive' => 0,
@@ -110,15 +110,16 @@ class Konfirmasi_OrderController extends Controller
             'tanggal_pesan' => $konfirmasi_order->tanggal_pesan,
         ]);
 
-        $update_status_rfq = rfq::where('kode_rfq', $kode_rfq)->first();
-        $update_status_rfq -> status =2;
-        $update_status_rfq -> tanggal_confirm_vendor = $now->format('d-m-Y');
-        $update_status_rfq ->save();
+        $update_status_rfq = rfq::where('kode_rfq',$kode_rfq)->first();
+        $update_status_rfq->status = 2;
+        $update_status_rfq->tanggal_confirm_vendor = $now->format('d-m-Y,H:i');
+        $update_status_rfq->save();
 
-        $update_count_vendor = rfq::where('id',$konfirmasi_order->id_vendor)->first();
-        $update_count_vendor = $update_count_vendor->request_order - 1 ;
+        $update_count_vendor = vendor::where('id',$konfirmasi_order->id_vendor)->first();
+        $update_count_vendor->request_order = $update_count_vendor->request_order - 1 ;
+        $update_count_vendor->save();
 
-        $delete_confirm = konfirmasi_order::where('kode_rfq',$kode_rfq)->first();
+        $delete_confirm = konfirmasi_order::where('kode_rfq',$kode_rfq)->first()->delete();
 
         if ($purchase_order) {
             Alert::success('Data Berhasil Dikonfirmasi');

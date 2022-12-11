@@ -9,4 +9,5 @@ class order_pembelian extends Model
 {
     use HasFactory;
     protected $guarded =[];
+    protected $primarykey ='id';
 }

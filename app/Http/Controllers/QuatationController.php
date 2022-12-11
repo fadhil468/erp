@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\mad;
+use App\Models\quatation;
+use App\Models\barang;
+use App\Models\customer;
+use Alert;
 
-class MadController extends Controller
+class QuatationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +17,8 @@ class MadController extends Controller
      */
     public function index()
     {
-        $mads = mad::orderBy('tanggal', 'asc')->paginate(8);
-        return view ('Mad-Page.Mad', compact('mads'));
+        $quatations = quatation::all();
+        return view('Quatation-Page.Quatation',compact('quatations'));
     }
 
     /**
@@ -25,7 +28,7 @@ class MadController extends Controller
      */
     public function create()
     {
-        //
+        return view('Quatation-Page.create');
     }
 
     /**
@@ -36,7 +39,7 @@ class MadController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
     }
 
     /**
@@ -82,5 +85,10 @@ class MadController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function proses()
+    {
+        
     }
 }

@@ -20,7 +20,7 @@ class RfqController extends Controller
      */
     public function index()
     {
-        $rfqs = RFQ::orderBy('id','desc')->paginate(10);
+        $rfqs = RFQ::orderBy('id','asc')->paginate(10);
         return view('Rfq-Page.Rfq',compact('rfqs'));
     }
 
@@ -44,7 +44,7 @@ class RfqController extends Controller
     public function store(Request $request)
     {
         $now = Carbon::now();
-        $kode_rfq = 'RFQ'.date('dmY');
+        $kode_rfq = 'RFQ'.date('dmYHis');
 
         $rfq = rfq::create([
             'nama_vendor' => $request->nama_vendor,
@@ -58,7 +58,7 @@ class RfqController extends Controller
             'tanggal_pesan' => $now->format('d-m-Y'),
             'status' => 1,
             'tanggal_confirm_vendor' => 'Menunggu Konfirmasi',
-            'tanggal_pembayaran' => 'Belum ada tagihan',
+            'tanggal_pembayaran' => 'Menunggu Pembayaran',
         ]);
 
         $konfirmasi_order = konfirmasi_order::create([

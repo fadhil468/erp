@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('size');
             $table->string('deskripsi_produk');
             $table->integer('penjualan');
+            $table->integer('stok');
             $table->string('foto')->nullable();
             $table->timestamps();
         });

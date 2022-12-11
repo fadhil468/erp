@@ -21,42 +21,6 @@
 			</div>
 		</div><!--/.row-->
 		
-		<div class="panel panel-container">
-			<div class="row">
-				<div class="col-xs-6 col-md-3 col-lg-3 no-padding">
-					<div class="panel panel-teal panel-widget border-right">
-						<div class="row no-padding"><em class="fa fa-xl fa-shopping-cart color-blue"></em>
-							<div class="large">120</div>
-							<div class="text-muted">New Orders</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-xs-6 col-md-3 col-lg-3 no-padding">
-					<div class="panel panel-blue panel-widget border-right">
-						<div class="row no-padding"><em class="fa fa-xl fa-comments color-orange"></em>
-							<div class="large">52</div>
-							<div class="text-muted">Comments</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-xs-6 col-md-3 col-lg-3 no-padding">
-					<div class="panel panel-orange panel-widget border-right">
-						<div class="row no-padding"><em class="fa fa-xl fa-users color-teal"></em>
-							<div class="large">24</div>
-							<div class="text-muted">New Users</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-xs-6 col-md-3 col-lg-3 no-padding">
-					<div class="panel panel-red panel-widget border-right">
-						<div class="row no-padding"><em class="fa fa-xl fa-search color-red"></em>
-							<div class="large">25.2k</div>
-							<div class="text-muted">Page Views</div>
-						</div>
-					</div>
-				</div>
-			</div><!--/.row-->
-		</div>
         <table class="table table-bordered table-striped table-hover">
             <thead>
 				<a type="button" class="btn btn-primary btn-lg" href="{{ route ('bahanbaku.create') }} ">+</a>
@@ -87,12 +51,12 @@
 						@if ($bahanbaku->stok == 0)
 							<span class="badge bg-danger">Belum Tersedia</span>
 						@elseif ($bahanbaku->stok >0)
-							@if($bahanbaku == 'Kain')
-							<span class="badge bg-primary me-2" >{{$bahanbaku->stok}} <small>meter</small></span>	
-						@elseif ($bahanbaku == 'Benang')
-								<span class="badge bg-primary me-2" >{{$bahanbaku->stok}} <small>roll</small></span>
-						@elseif ($bahanbaku == 'Dakron')
-								<span class="badge bg-primary me-2" >{{$bahanbaku->stok}} <small>gram</small></span>
+							@if($bahanbaku->nama_bahan_baku == 'Kain')
+							<span class="badge bg-info" >{{$bahanbaku->stok}} <small>meter</small></span>	
+						@elseif ($bahanbaku->nama_bahan_baku == 'Benang')
+								<span class="badge bg-info" >{{$bahanbaku->stok}} <small>roll</small></span>
+						@elseif ($bahanbaku->nama_bahan_baku == 'Dakron')
+								<span class="badge bg-info" >{{$bahanbaku->stok}} <small>gram</small></span>
 							@endif
 						@endif
 					</td>
