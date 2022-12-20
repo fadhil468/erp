@@ -6,19 +6,20 @@
 @include('Layout.sidebar')
 @include('sweetalert::alert')
 
+
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
 		<div class="row">
 			<ol class="breadcrumb">
 				<li><a href="#">
 					<em class="fa fa-home"></em>
 				</a></li>
-				<li class="active">Invoice</li>
+				<li class="active">Rekap Pembelian Customer</li>
 			</ol>
 		</div><!--/.row-->
 		
 		<div class="row">
 			<div class="col-lg-12">
-				<h1 class="page-header">Invoice</h1>
+				<h1 class="page-header">Rekap Pembelian Customer</h1>
 			</div>
 		</div><!--/.row-->
 
@@ -31,10 +32,9 @@
                 <th colspan="3">Data Produk</th>
 				<th rowspan="2">Jumlah Pesanan</th>
 				<th rowspan="2">Total Harga</th>
-				<th rowspan="2">Status</th>
 				<th rowspan="2">Tanggal Pesan</th>
 				<th rowspan="2">Tempo</th>
-				<th colspan="3">Action</th>
+				<th rowspan="2">Status</th>
               </tr>
 			  <tr>
                 <th >Nama Customer</th>
@@ -44,9 +44,6 @@
                 <th >Nama Produk</th>
                 <th >Size</th>
 				<th >Harga</th>
-				<th >Paid</th>
-				<th >Delivery</th>
-				<th >Konfirmasi</th>
 			  </tr>
             </thead>
             <tbody>
@@ -66,15 +63,6 @@
                     <td>Rp. @idr($invoice->harga)</td>
                     <td>{{$invoice->jumlah}}</td>
                     <td>Rp. @idr($invoice->total)</td>
-                    <td>
-						@if ($invoice->status == 0)
-							 Pesanan Penjualan
-						@elseif ($invoice->status == 1)
-							Delivery
-                        @elseif($invoice->status == 2)
-                            Pesanan Diterima
-						@endif
-					</td>
 					<td>
 						{{$invoice->tanggal}}
 					</td>
@@ -92,20 +80,28 @@
                             <button class ="btn btn-sm btn-success" disabled>Paid <i class="fa fa-thumbs-o-up"></i></button>
                         @endif
                     </td>
-                    <td>
-                        @if($invoice->status == 1)
-                            <a href="{{route('invoice.proses',$invoice->id)}}"class="btn btn-sm btn-warning">Konfirmasi</a>
-                        @elseif($invoice->status >1)
-                            <button class ="btn btn-sm btn-success" disabled>Konfirmasi <i class="fa fa-thumbs-o-up"></i></button>
-                        @endif
-                    </td>
-                    <td>
-                        @if ($invoice->status == 2)
-                        <button class="btn btn-sm btn-info" disabled>Terkonfirmasi <i class="fa fa-thumbs-o-up"></i></button>
-                    </td> 
-                     @endif
                 </tr>
                 @endforeach
             </tbody>
-
+        </table>
+        <nav aria-label="Page navigation">
+            <ul class="pagination">
+                <li>
+                    <a href="{{ $invoices->previousPageUrl() }}" aria-label="Previous">
+                      <span aria-hidden="true">&laquo;</span>
+                    </a>
+                  </li>
+                  @foreach ($invoices as $invo)
+                    {{ $invo->links() }}
+                @endforeach
+                  <li>
+                    <a href="{{ $invoices->nextPageUrl() }}" aria-label="Next">
+                      <span aria-hidden="true">&raquo;</span>
+                    </a>
+                  </li>
+            </ul>
+        </nav>
+        {{-- Halaman : {{ $invoices->currentPage() }} <br/>
+        Jumlah Data : {{ $invoices->total() }} <br/>
+        Data Per Halaman : {{ $invoices->perPage() }} <br/> --}}
 @endsection

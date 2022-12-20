@@ -15,6 +15,7 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\SaleController;
 use App\Http\Controllers\QuatationController;
 use App\Http\Controllers\InvoiceController;
+use App\Http\Controllers\AccountingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -96,8 +97,12 @@ Route::post('/sale/ajax6',[SaleController::class,'ajax6'])->name('sale.ajax6');
 
 //Quatation
 Route::resource('quatation',QuatationController::class);
+Route::get('quatation/{id}/proses',[QuatationController::class,'proses'])->name('quatation.proses');
 
 //Invoice
 Route::resource('invoice',InvoiceController::class);
 Route::get('invoice/{id}/paid',[InvoiceController::class,'paid'])->name('invoice.paid');
 Route::get('invoice/{id}/proses',[InvoiceController::class,'proses'])->name('invoice.proses');
+
+//accounting
+Route::resource('accounting',AccountingController::class);
