@@ -3,12 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\quatation;
-use App\Models\barang;
-use App\Models\customer;
-use Alert;
+use Illuminate\Support\Facades\DB;
+use App\Models\accounting;
+use App\Models\invoice;
 
-class QuatationController extends Controller
+class AccountingController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +16,8 @@ class QuatationController extends Controller
      */
     public function index()
     {
-        $quatations = quatation::all();
-        return view('Quatation-Page.Quatation',compact('quatations'));
+        $invoices = invoice::where('status','>',0 )->paginate(10);
+        return view('Accounting-Page.Customer-Rekap',['invoices' => $invoices]);
     }
 
     /**
@@ -28,7 +27,7 @@ class QuatationController extends Controller
      */
     public function create()
     {
-        return view('Quatation-Page.create');
+        //
     }
 
     /**
@@ -39,7 +38,7 @@ class QuatationController extends Controller
      */
     public function store(Request $request)
     {
-
+        //
     }
 
     /**
@@ -85,22 +84,5 @@ class QuatationController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    public function proses($id)
-    {
-        $quatations = quatation::find($id);
-        $quatations->status = 1;
-        $quatations->save();
-
-        if($quatations)
-        {
-            Alert::success('Success','Stok Tersedia');
-            return redirect()->route('quatation.index');
-        }
-        else{
-            Alert::error('Error','Stok Tidak Tersedia');
-            return redirect()->route('quatation.index');
-        }
     }
 }

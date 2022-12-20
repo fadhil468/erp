@@ -83,6 +83,17 @@
 	</ul>
 	</li>
 
+	<li class="parent "><a data-toggle="collapse" href="#sub-item-5">
+		<em class="fa fa-folder-open">&nbsp;</em> Accounting <span data-toggle="collapse" href="#sub-item-5"
+			class="icon pull-right"><em class="fa fa-chevron-down"></em></span>
+	</a>
+		<ul class="children collapse" id="sub-item-5">
+			<li><a class="{{ request()->is('accounting*') ? 'active' : '' }}" href="{{route('accounting.index')}}">
+					<span class="fa fa-file-text">&nbsp;</span> Rekap Customer
+				</a>
+			</li>
+		</ul>
+	</li>
 	<li><a class="{{ request()->is('bom*') ? 'active' : '' }}" href="{{route('bom.index')}}">
 			<span class="fa fa-cogs">&nbsp;</span> Data Bom
 		</a>
@@ -97,7 +108,7 @@
 		</a>
 	</li>
 	<li><a class="{{ request()->is('mad*') ? 'active' : '' }}" href="{{route('mad.index')}}">
-		<span class="fa fa-check-square">&nbsp;</span> Data Mad
+		<span class="fa fa-check-circle">&nbsp;</span> Data Mad
 	</a>
 	</li>
 

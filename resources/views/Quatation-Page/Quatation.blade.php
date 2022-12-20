@@ -33,6 +33,7 @@
 				<th rowspan="2">Total Harga</th>
 				<th rowspan="2">Status</th>
 				<th rowspan="2">Tanggal Pesan</th>
+				<th rowspan="2">Aksi</th>
               </tr>
 			  <tr>
                 <th >Nama Customer</th>
@@ -63,14 +64,21 @@
                     <td>Rp. @idr($quatation->total)</td>
                     <td>
 						@if ($quatation->status == 0)
-							 Pesanan Penjualan
+							 Quotation
 						@else
-							Sudah diproses
+							Pesanan Penjualan
 						@endif
 					</td>
 					<td>
 						{{$quatation->tanggal}}
 					</td>
+                    <td>
+                        @if ($quatation->status == 0)
+                           <a href="{{ route('quatation.proses', $quatation->id) }}"class="btn btn-sm btn-danger"><i class="fa fa-times"></i>Konfirmasi</a>
+                        @elseif($quatation->status > 0)
+                            <button class ="btn btn-sm btn-success" disabled>Terkonfirmasi <i class="fa fa-thumbs-o-up"></i></button>
+                        @endif
+                    </td>
                     {{-- <td>
 					<form action="{{ route('quatation.proses', $quatation->id) }}" method="POST">
 						@csrf
