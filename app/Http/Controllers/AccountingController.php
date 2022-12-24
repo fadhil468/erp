@@ -17,7 +17,7 @@ class AccountingController extends Controller
     public function index()
     {
         $invoices = invoice::where('status','>',0 )->paginate(10);
-        return view('Accounting-Page.Customer-Rekap',['invoices' => $invoices]);
+        return view('Accounting-Page.Customer-Rekap', compact('invoices'));
     }
 
     /**

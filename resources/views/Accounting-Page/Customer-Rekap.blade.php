@@ -84,24 +84,10 @@
                 @endforeach
             </tbody>
         </table>
-        <nav aria-label="Page navigation">
-            <ul class="pagination">
-                <li>
-                    <a href="{{ $invoices->previousPageUrl() }}" aria-label="Previous">
-                      <span aria-hidden="true">&laquo;</span>
-                    </a>
-                  </li>
-                  @foreach ($invoices as $invo)
-                    {{ $invo->links() }}
-                @endforeach
-                  <li>
-                    <a href="{{ $invoices->nextPageUrl() }}" aria-label="Next">
-                      <span aria-hidden="true">&raquo;</span>
-                    </a>
-                  </li>
-            </ul>
-        </nav>
-        {{-- Halaman : {{ $invoices->currentPage() }} <br/>
-        Jumlah Data : {{ $invoices->total() }} <br/>
-        Data Per Halaman : {{ $invoices->perPage() }} <br/> --}}
+        
+        <div class="d-flex justify-content-center">
+            {!! $invoices->links() !!}
+        </div>
+    </ul>
+
 @endsection
