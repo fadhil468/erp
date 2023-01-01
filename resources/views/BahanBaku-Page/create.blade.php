@@ -60,10 +60,6 @@
                                         required>
                                 </div>
 
-                                <div class="col-md-6">
-                                    <label>Stok</label>
-                                    <input class="form-control" type="text" name="stok" placeholder="" required>
-                                </div>
                                 <br>
                                 <div class="col-md-6">
                                     <div class="button-wrapper">

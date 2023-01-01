@@ -51,7 +51,6 @@ class BahanBakuController extends Controller
             'id_produk' => $request->id_produk,
             'nama_bahan_baku' => $request->nama_bahan_baku,
             'berat_satuan' => $request->berat_satuan,
-            'jumlah' => $request->jumlah,
             'harga' => $request->harga,
             'vendor' => $request->vendor,
             'deskripsi_bahan_baku' => $request->deskripsi_bahan_baku,
@@ -101,11 +100,9 @@ class BahanBakuController extends Controller
                     'id_produk' => $request->id_produk,
                     'nama_bahan_baku' => $request->nama_bahan_baku,
                     'berat_satuan' => $request->berat_satuan,
-                    'jumlah' => $request->jumlah,
                     'harga' => $request->harga,
                     'vendor' => $request->vendor,
-                    'deskripsi_bahan_baku' => $request->deskripsi_bahan_baku,
-                    'stok' => $request->stok
+                    'deskripsi_bahan_baku' => $request->deskripsi_bahan_baku
                 ]);
                 return redirect()->route('bahanbaku.index');
     }
