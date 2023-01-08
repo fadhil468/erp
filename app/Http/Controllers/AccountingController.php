@@ -23,9 +23,9 @@ class AccountingController extends Controller
 
     public function cetak_pdf()
     {
-    	$invoices = invoice::all();
- 
-    	$pdf = PDF::loadview('rekap_penjualan',['invoice'=>$invoices]);
+    	$invoices = invoice::where('status','>',0 )->paginate(10);
+
+    	$pdf = PDF::loadview('Accounting-Page/rekap_penjualan',['invoice'=>$invoices]);
     	return $pdf->stream('Laporan-Penjualan');
     }
 
