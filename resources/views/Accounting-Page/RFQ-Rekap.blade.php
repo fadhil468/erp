@@ -13,16 +13,16 @@
 				<li><a href="#">
 					<em class="fa fa-home"></em>
 				</a></li>
-				<li class="active">Rekap Pembelian Customer</li>
+				<li class="active">Rekap Pembelian Bahan Baku</li>
 			</ol>
 		</div><!--/.row-->
 		
 		<div class="row">
 			<div class="col-lg-12">
-				<h1 class="page-header">Rekap Pembelian Customer</h1>
+				<h1 class="page-header">Rekap Pembelian Bahan Baku</h1>
 			</div>
 		</div><!--/.row-->
-        <a href="/cetak_pdf_pengeluaran" class="btn btn-primary" target="_blank">CETAK PDF</a>
+        <a href="/cetak_pengeluaran" class="btn btn-primary" target="_blank">CETAK PDF</a>
         <table class="table table-bordered table-striped table-hover">
             <thead>
               <tr>

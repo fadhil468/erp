@@ -109,4 +109,5 @@ Route::get('invoice/{id}/proses',[InvoiceController::class,'proses'])->name('inv
 Route::resource('accounting',AccountingController::class);
 Route::get('/cetak_pdf', [AccountingController::class, 'cetak_pdf']);
 
-Route::get('/cetak_pdf_pengeluaran', [AccountingController::class, 'cetak_pdf_pengeluaran']);
+Route::get('/pengeluaran',[AccountingController::class,'pengeluaran'])->name('accounting.pengeluaran');
+Route::get('/cetak_pengeluaran', [AccountingController::class, 'cetak_pengeluaran'])->name('accounting.cetak_pengeluaran');
