@@ -92,6 +92,10 @@
 					<span class="fa fa-file-text">&nbsp;</span> Rekap Customer
 				</a>
 			</li>
+			<li><a class="{{ request()->is('accounting*') ? 'active' : '' }}" href="{{route('accounting.index')}}">
+					<span class="fa fa-file-text">&nbsp;</span> Rekap RFQ
+				</a>
+			</li>
 		</ul>
 	</li>
 	<li><a class="{{ request()->is('bom*') ? 'active' : '' }}" href="{{route('bom.index')}}">

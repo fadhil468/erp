@@ -29,7 +29,7 @@
                     <div class="row">
                         <div class="col-xs-6 col-md-6 col-lg-6 no-padding">
                             <div style="margin-left: 1rem">
-                                <div class="col-md-6">
+                                <div>
                                     <label>Register Payment</label>
                                     <select class="form-control" type="text" name="jatuh_tempo" placeholder="" required>
                                         <option disable selected>-- Pilih Jenis --</option>
@@ -38,9 +38,10 @@
                                         <option value="30 Hari">30 Hari</option>
                                     </select>
                                 </div>
-                                <td>
+                                <br>
+                                <div>
                                     <button type="submit" class="btn btn-info" style="margin-left: 1.5rem">Simpan Data</button>
-                                </td>
+                                </div>
                             </div>
                         </div>
                     </div>
