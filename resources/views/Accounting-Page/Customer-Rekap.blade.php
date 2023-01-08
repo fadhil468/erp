@@ -22,7 +22,7 @@
 				<h1 class="page-header">Rekap Pembelian Customer</h1>
 			</div>
 		</div><!--/.row-->
-
+        <a href="/cetak_pdf" class="btn btn-primary" target="_blank">CETAK PDF</a>
         <table class="table table-bordered table-striped table-hover">
             <thead>
               <tr>

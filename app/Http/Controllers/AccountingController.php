@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\accounting;
 use App\Models\invoice;
+use PDF;
 
 class AccountingController extends Controller
 {
@@ -18,6 +19,14 @@ class AccountingController extends Controller
     {
         $invoices = invoice::where('status','>',0 )->paginate(10);
         return view('Accounting-Page.Customer-Rekap', compact('invoices'));
+    }
+
+    public function cetak_pdf()
+    {
+    	$invoices = invoice::where('status','>',0 )->paginate(10);
+
+    	$pdf = PDF::loadview('Accounting-Page/rekap_penjualan',['invoices'=>$invoices]);
+    	return $pdf->stream('Laporan-Penjualan');
     }
 
     /**
