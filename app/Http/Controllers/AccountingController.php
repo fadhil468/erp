@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\accounting;
 use App\Models\invoice;
+use App\Models\rfq;
 use PDF;
 
 class AccountingController extends Controller
@@ -34,6 +35,27 @@ class AccountingController extends Controller
         
     }
     
+
+    public function index_pengeluaran()
+    {
+        $rfqs = rfq::where('status','>',0 )->paginate(10);
+        return view('Accounting-Page.RFQ-Rekap', compact('rfqs'));
+    }
+
+    public function cetak_pdf_pengeluaran()
+    {
+    	$rfqs = rfq::where('status','>',0)->get();
+
+        $tota = rfq::where('status','>',0)->get();
+
+        $total = $tota->sum('total');
+
+    	$pdf = PDF::loadview('Accounting-Page/rekap_pengeluaran',['rfqs'=>$rfqs],['total' => $total]);
+    	return $pdf->stream('Laporan-Pengeluaran');
+        
+    }
+
+
     /**
      * Show the form for creating a new resource.
      *
