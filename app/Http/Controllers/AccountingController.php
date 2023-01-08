@@ -25,7 +25,7 @@ class AccountingController extends Controller
     {
     	$invoices = invoice::where('status','>',0 )->paginate(10);
 
-    	$pdf = PDF::loadview('Accounting-Page/rekap_penjualan',['invoice'=>$invoices]);
+    	$pdf = PDF::loadview('Accounting-Page/rekap_penjualan',['invoices'=>$invoices]);
     	return $pdf->stream('Laporan-Penjualan');
     }
 
