@@ -23,12 +23,17 @@ class AccountingController extends Controller
 
     public function cetak_pdf()
     {
-    	$invoices = invoice::where('status','>',0 )->paginate(10);
+    	$invoices = invoice::where('status','>',0)->get();
 
-    	$pdf = PDF::loadview('Accounting-Page/rekap_penjualan',['invoices'=>$invoices]);
+        $tota = invoice::where('status','>',0)->get();
+
+        $total = $tota->sum('total');
+
+    	$pdf = PDF::loadview('Accounting-Page/rekap_penjualan',['invoices'=>$invoices],['total' => $total]);
     	return $pdf->stream('Laporan-Penjualan');
+        
     }
-
+    
     /**
      * Show the form for creating a new resource.
      *
