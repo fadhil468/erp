@@ -38,15 +38,15 @@ class AccountingController extends Controller
 
     public function pengeluaran()
     {
-        $rfqs = rfq::where('status','>',0 )->paginate(10);
+        $rfqs = rfq::where('status','>',1 )->paginate(10);
         return view('Accounting-Page.RFQ-Rekap', compact('rfqs'));
     }
 
     public function cetak_pengeluaran()
     {
-    	$rfqs = rfq::where('status','>',0)->get();
+    	$rfqs = rfq::where('status','>',1)->get();
 
-        $tota = rfq::where('status','>',0)->get();
+        $tota = rfq::where('status','>',1)->get();
 
         $total = $tota->sum('total');
 

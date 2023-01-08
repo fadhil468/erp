@@ -10,6 +10,7 @@
 		table tr td,
 		table tr th{
 			font-size: 9pt;
+            /* border: 1px solid black; */
 		}
 	</style>
 	<center>
