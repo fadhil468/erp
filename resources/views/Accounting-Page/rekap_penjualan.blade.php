@@ -58,6 +58,8 @@
                 @endforeach
 		</tbody>
 	</table>
+    <div style='text-align:right'>Total Penjualan : Rp. @idr($total)</div>
+    
     <!-- Total penjualan -->
  
 </body>
