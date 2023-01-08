@@ -36,13 +36,13 @@ class AccountingController extends Controller
     }
     
 
-    public function index_pengeluaran()
+    public function pengeluaran()
     {
         $rfqs = rfq::where('status','>',0 )->paginate(10);
         return view('Accounting-Page.RFQ-Rekap', compact('rfqs'));
     }
 
-    public function cetak_pdf_pengeluaran()
+    public function cetak_pengeluaran()
     {
     	$rfqs = rfq::where('status','>',0)->get();
 
