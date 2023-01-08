@@ -49,7 +49,7 @@
 	</ul>
 </li>
 	<li class="parent "><a data-toggle="collapse" href="#sub-item-1">
-			<em class="fa fa-shopping-cart">&nbsp;</em> Data Pemesanan Bahan<span data-toggle="collapse" href="#sub-item-1"
+			<em class="fa fa-shopping-cart">&nbsp;</em> Data Pemesanan Barang<span data-toggle="collapse" href="#sub-item-1"
 				class="icon pull-right"><em class="fa fa-chevron-down"></em></span>
 		</a>
 		<ul class="children collapse" id="sub-item-1">

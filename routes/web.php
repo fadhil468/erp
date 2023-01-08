@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\PemesananController;
 use App\Http\Controllers\BahanBakuController;
@@ -28,9 +29,9 @@ use App\Http\Controllers\AccountingController;
 |
 */
 
-Route::get('/', function () {
-    return view('Admin-Page.Admin');
-});
+//Dashboard
+Route::get('/',[AdminController::class,'index'])->name('Admin');
+
 //Barang
 Route::resource('/barang',BarangController::class);
 
@@ -60,7 +61,7 @@ Route::post('/pemesanan/{id}/proses',[PemesananController::class,'proses'])->nam
 
 // Vendor
 Route::resource('datavendor',VendorController::class);
-Route::post('/datavendor/{id}/tambahstok',[VendorController::class,'tambahstok'])->name('datavendro.stok');
+Route::post('/datavendor/{id}/tambahstok',[VendorController::class,'tambahstok'])->name('datavendor.stok');
 
 //Mad
 Route::resource('/mad',MadController::class);
